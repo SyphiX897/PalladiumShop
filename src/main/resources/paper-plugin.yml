@@ -1,0 +1,10 @@
+name: PalladiumShop
+version: '${version}'
+main: ir.syphix.palladiumshop.PalladiumShop
+loader: ir.syphix.palladiumshop.PalladiumShopLoader
+dependencies:
+  server:
+    Vault:
+      load: BEFORE
+      required: true
+api-version: '1.20'

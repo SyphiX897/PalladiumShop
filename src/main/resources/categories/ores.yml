@@ -1,0 +1,86 @@
+items:
+  NETHERITE_INGOT:
+    buy: 50000
+    sell: 250
+  DIAMOND:
+    buy: 1000
+    sell: 200
+  EMERALD:
+    buy: 900
+    sell: 50
+  GOLD_INGOT:
+    buy: 750
+    sell: 85
+  IRON_INGOT:
+    buy: 750
+    sell: 45
+  COPPER_INGOT:
+    buy: 650
+    sell: 35
+  LAPIS_LAZULI:
+    buy: 300
+    sell: 20
+  REDSTONE:
+    buy: 300
+    sell: 22.5
+  COAL:
+    buy: 100
+    sell: 30
+  NETHER_QUARTZ:
+    buy: 150
+    sell: 25
+  ANCIENT_DEBRIS:
+    buy: 12500
+    sell: 300
+  DIAMOND_ORE:
+    buy: 2000
+    sell: 250
+  EMERALD_ORE:
+    buy: 1800
+    sell: 250
+  GOLD_ORE:
+    buy: 1500
+    sell: 150
+  IRON_ORE:
+    buy: 1500
+    sell: 150
+  COPPER_ORE:
+    buy: 1300
+    sell: 80
+  LAPIS_LAZULI_ORE:
+    buy: 600
+    sell: 100
+  REDSTONE_ORE:
+    buy: 600
+    sell: 110
+  COAL_ORE:
+    buy: 250
+    sell: 80
+  NETHER_QUARTZ_ORE:
+    buy: 300
+    sell: 75
+  DEEPSLATE_DIAMOND_ORE:
+    buy: 3000
+    sell: 500
+  DEEPSLATE_EMERALD_ORE:
+    buy: 2700
+    sell: 500
+  DEEPSLATE_GOLD_ORE:
+    buy: 2250
+    sell: 300
+  DEEPSLATE_IRON_ORE:
+    buy: 2250
+    sell: 300
+  DEEPSLATE_COPPER_ORE:
+    buy: 1950
+    sell: 200
+  DEEPSLATE_LAPIS_LAZULI_ORE:
+    buy: 900
+    sell: 300
+  DEEPSLATE_REDSTONE_ORE:
+    buy: 900
+    sell: 300
+  DEEPSLATE_COAL_ORE:
+    buy: 500
+    sell: 200
+

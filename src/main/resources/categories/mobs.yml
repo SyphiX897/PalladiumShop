@@ -1,0 +1,70 @@
+items:
+  ARROW:
+    buy: 100
+    sell: 7
+  BONE:
+    buy: 100
+    sell: 6
+  ROTTEN_FLESH:
+    buy: 120
+    sell: 10
+  SPIDER_EYE:
+    buy: 200
+    sell: 20
+  STRING:
+    buy: 175
+    sell: 18
+  GUNPOWDER:
+    buy: 200
+    sell: 22.5
+  BLAZE_ROD:
+    buy: 275
+    sell: 25
+  ENDER_PEARL:
+    buy: 350
+    sell: 30
+  GHAST_TEAR:
+    buy: 1000
+    sell: 100
+  MAGMA_CREAM:
+    buy: 120
+    sell: 8
+  SLIME_BALL:
+    buy: 200
+    sell: 25
+  NAUTILUS_SHELL:
+    buy: 10000
+    sell: 550
+  PHANTOM_MEMBRANE:
+    buy: 2500
+    sell: 120
+  TOTEM_OF_UNDYING:
+    buy: 25000
+    sell: 500
+  SHULKER_SHELL:
+    buy: 15000
+    sell: 450
+  WITHER_SKELETON_SKULL:
+    buy: 40000
+    sell: 250
+  INK_SAC:
+    buy: 185
+    sell: 50
+  GLOW_INK_SAC:
+    buy: 385
+    sell: 65
+  LEATHER:
+    buy: 275
+    sell: 18
+  RABBIT_FOOT:
+    buy: 1000
+    sell: 100
+  RABBIT_HIDE:
+    buy: 85
+    sell: 20
+  FEATHER:
+    buy: 120
+    sell: 10
+  EGG:
+    buy: 100
+    sell: 7
