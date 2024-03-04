@@ -7,9 +7,9 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 @GuiHandler
-public class Mobs extends CustomGui {
+public class MobsGui extends CustomGui {
 
-    public Mobs() {
+    public MobsGui() {
         super("mobs", PalladiumShop.configList.get("mobs"), 54, "<#00aeff>Mobs Drop");
 
         glassShapeIngredient('B', new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE), " ");

@@ -35,8 +35,8 @@ public class CustomGui {
     public NamespacedKey SHOP_SELL = new NamespacedKey(Origin.getPlugin(), "shop_sell");
 
     public CustomGui(String id, FileConfiguration config, int size, String title) {
-        this.config = config;
         this.id = id;
+        this.config = config;
         this.size = size;
         int itemAmount = config.getConfigurationSection("items").getKeys(false).size();
 
@@ -52,6 +52,14 @@ public class CustomGui {
             inventories.put((i + 1), Bukkit.createInventory(null, size, toComponent(title + " <dark_gray>(Page: " + (i + 1) + ")")));
         }
         inventory = inventories.get(1);
+    }
+
+    public CustomGui(String id, int size, String title) {
+        this.id = id;
+        this.size = size;
+        this.inventory = Bukkit.createInventory(null, size, toComponent(title));
+        this.config = null;
+        this.page = 0;
     }
 
     public void glassShapeIngredient(Character character, ItemStack itemStack, String displayName) {

@@ -7,9 +7,9 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 @GuiHandler
-public class Ores extends CustomGui {
+public class OresGui extends CustomGui {
 
-    public Ores() {
+    public OresGui() {
         super("ores", PalladiumShop.configList.get("ores"), 54, "<#00aeff>Ores");
 
         glassShapeIngredient('B', new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE), " ");
