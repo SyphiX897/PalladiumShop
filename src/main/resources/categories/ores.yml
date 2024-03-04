@@ -26,7 +26,7 @@ items:
   COAL:
     buy: 100
     sell: 30
-  NETHER_QUARTZ:
+  QUARTZ:
     buy: 150
     sell: 25
   ANCIENT_DEBRIS:
@@ -47,7 +47,7 @@ items:
   COPPER_ORE:
     buy: 1300
     sell: 80
-  LAPIS_LAZULI_ORE:
+  LAPIS_ORE:
     buy: 600
     sell: 100
   REDSTONE_ORE:
@@ -74,7 +74,7 @@ items:
   DEEPSLATE_COPPER_ORE:
     buy: 1950
     sell: 200
-  DEEPSLATE_LAPIS_LAZULI_ORE:
+  DEEPSLATE_LAPIS_ORE:
     buy: 900
     sell: 300
   DEEPSLATE_REDSTONE_ORE:

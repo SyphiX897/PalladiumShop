@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,8 +34,6 @@ public final class PalladiumShop extends OriginPlugin {
                 getLogger().warning(string);
             }
         }
-
-        Origin.registerListener(new PlayerChatListener());
     }
 
     @Override
@@ -53,6 +52,12 @@ public final class PalladiumShop extends OriginPlugin {
             }
         }
         for (String fileName : filesList) {
+            if (Arrays.stream(rootDirectory.listFiles()).map(File::getName).toList().contains(fileName + ".yml")) {
+                YamlConfig itemConfig = new YamlConfig(rootDirectory, (fileName + ".yml"), false);
+                FileConfiguration configuration = itemConfig.getConfig();
+                categoriesList.put(fileName, configuration);
+                continue;
+            }
             YamlConfig itemConfig = new YamlConfig(rootDirectory, (fileName + ".yml"), false);
             saveResource("categories" + File.separator + fileName + ".yml", false);
             FileConfiguration configuration = itemConfig.getConfig();

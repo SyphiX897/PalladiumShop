@@ -4,6 +4,7 @@ import cloud.commandframework.Command.Builder;
 import cloud.commandframework.arguments.standard.StringArgument;
 import ir.syphix.palladiumshop.PalladiumShop;
 import ir.syphix.palladiumshop.core.CustomGuiManager;
+import ir.syphix.palladiumshop.gui.Ores;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.command.Command;
 import ir.syrent.origin.paper.command.interfaces.ISender;
@@ -55,6 +56,9 @@ public class OpenGuiCommand extends Command {
 
                     if (player == null) return;
 
+                    for (String s : CustomGuiManager.guis.keySet()) {
+                        Origin.warn(s);
+                    }
                     player.openInventory(CustomGuiManager.getCustomGuiById(menuName).getInventory());
                 });
         saveCommand(command);
