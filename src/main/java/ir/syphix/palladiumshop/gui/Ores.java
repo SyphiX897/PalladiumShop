@@ -10,11 +10,11 @@ import org.bukkit.inventory.ItemStack;
 public class Ores extends CustomGui {
 
     public Ores() {
-        super("ores", PalladiumShop.categoriesList.get("ores"), 54, "<aqua>Ores");
+        super("ores", PalladiumShop.configList.get("ores"), 54, "<#00aeff>Ores");
 
-        addIngredient('B', new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE), " ");
-        addIngredient('G', new ItemStack(Material.LIME_STAINED_GLASS_PANE), " ");
-        addShape("GGBBBBBGG", "G       G", "B       B", "B       B", "G       G", "GGBBBBBGG");
+        glassShapeIngredient('B', new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE), " ");
+        glassShapeIngredient('G', new ItemStack(Material.LIME_STAINED_GLASS_PANE), " ");
+        glassShape("GGBBBBBGG", "G       G", "B       B", "B       B", "G       G", "GGBBBBBGG");
         completeGui();
         registerGui();
     }

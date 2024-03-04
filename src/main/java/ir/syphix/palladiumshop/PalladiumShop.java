@@ -2,6 +2,7 @@ package ir.syphix.palladiumshop;
 
 import ir.syphix.palladiumshop.annotation.GuiHandlerProcessor;
 import ir.syphix.palladiumshop.command.OpenGuiCommand;
+import ir.syphix.palladiumshop.listener.InventoryClickListener;
 import ir.syphix.palladiumshop.utils.YamlConfig;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.OriginPlugin;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public final class PalladiumShop extends OriginPlugin {
 
-    public static HashMap<String, FileConfiguration> categoriesList = new HashMap<>();
+    public static HashMap<String, FileConfiguration> configList = new HashMap<>();
 
     private static Economy econ = null;
 
@@ -25,15 +26,10 @@ public final class PalladiumShop extends OriginPlugin {
     public void onEnable() {
         saveDefaultConfig();
         addConfigFiles();
-        new OpenGuiCommand();
         GuiHandlerProcessor.process();
+        new OpenGuiCommand();
 
-        for (String key : categoriesList.keySet()) {
-            getLogger().warning(key);
-            for (String string : categoriesList.get(key).getConfigurationSection("items").getKeys(false)) {
-                getLogger().warning(string);
-            }
-        }
+        Origin.registerListener(new InventoryClickListener());
     }
 
     @Override
@@ -55,13 +51,13 @@ public final class PalladiumShop extends OriginPlugin {
             if (Arrays.stream(rootDirectory.listFiles()).map(File::getName).toList().contains(fileName + ".yml")) {
                 YamlConfig itemConfig = new YamlConfig(rootDirectory, (fileName + ".yml"), false);
                 FileConfiguration configuration = itemConfig.getConfig();
-                categoriesList.put(fileName, configuration);
+                configList.put(fileName, configuration);
                 continue;
             }
             YamlConfig itemConfig = new YamlConfig(rootDirectory, (fileName + ".yml"), false);
             saveResource("categories" + File.separator + fileName + ".yml", false);
             FileConfiguration configuration = itemConfig.getConfig();
-            categoriesList.put(fileName, configuration);
+            configList.put(fileName, configuration);
         }
     }
 
