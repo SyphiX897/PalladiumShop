@@ -2,12 +2,12 @@ package ir.syphix.palladiumshop;
 
 import ir.syphix.palladiumshop.annotation.GuiHandlerProcessor;
 import ir.syphix.palladiumshop.command.OpenGuiCommand;
+import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.listener.InventoryClickListener;
 import ir.syphix.palladiumshop.utils.YamlConfig;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.OriginPlugin;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
@@ -15,7 +15,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class PalladiumShop extends OriginPlugin {
 
@@ -28,6 +27,8 @@ public final class PalladiumShop extends OriginPlugin {
     public void onEnable() {
         saveDefaultConfig();
         addConfigFiles();
+        setupEconomy();
+        new ShopCategories(configList.values().stream().toList());
         GuiHandlerProcessor.process();
         new OpenGuiCommand();
 

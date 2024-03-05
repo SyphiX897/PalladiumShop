@@ -2,7 +2,7 @@ package ir.syphix.palladiumshop.gui;
 
 import ir.syphix.palladiumshop.PalladiumShop;
 import ir.syphix.palladiumshop.annotation.GuiHandler;
-import ir.syphix.palladiumshop.core.CustomGui;
+import ir.syphix.palladiumshop.core.gui.CustomGui;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

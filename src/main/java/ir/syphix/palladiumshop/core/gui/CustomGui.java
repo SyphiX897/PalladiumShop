@@ -1,4 +1,4 @@
-package ir.syphix.palladiumshop.core;
+package ir.syphix.palladiumshop.core.gui;
 
 import ir.syrent.origin.paper.Origin;
 import net.kyori.adventure.text.Component;
@@ -96,6 +96,7 @@ public class CustomGui {
     public void completeGui() {
         List<ItemStack> itemStackList = getItemStackList();
 
+
         if (page == 0) {
             int count = 0;
             for (int i = 0; i < size; i++) {
@@ -181,6 +182,10 @@ public class CustomGui {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void registerGui() {

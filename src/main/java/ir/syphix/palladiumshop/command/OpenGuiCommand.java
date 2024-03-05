@@ -3,7 +3,7 @@ package ir.syphix.palladiumshop.command;
 import cloud.commandframework.Command.Builder;
 import cloud.commandframework.arguments.standard.StringArgument;
 import ir.syphix.palladiumshop.PalladiumShop;
-import ir.syphix.palladiumshop.core.CustomGuiManager;
+import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.command.Command;
 import ir.syrent.origin.paper.command.interfaces.ISender;
@@ -11,18 +11,12 @@ import ir.syrent.origin.paper.utils.ComponentUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class OpenGuiCommand extends Command {
 
     public OpenGuiCommand() {
         super("palladiumshop", "ps");
-        List<String> playersList = new ArrayList<>();
-        for (Player player : Origin.getOnlinePlayers()) {
-            playersList.add(player.getName());
-        }
 
         Builder<ISender> command = getBuilder()
                 .permission(getPermission("opengui"))
@@ -33,7 +27,7 @@ public class OpenGuiCommand extends Command {
                 .argument(
                         StringArgument.<ISender>builder("player")
                                 .asOptional()
-                                .withSuggestionsProvider((context, input) -> playersList)
+                                .withSuggestionsProvider((context, input) -> Origin.getOnlinePlayers().stream().map(Player::getName).toList())
                 )
                 .handler(context -> {
                     Player player = context.getSender().player();
