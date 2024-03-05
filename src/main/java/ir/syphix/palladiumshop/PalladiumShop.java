@@ -64,16 +64,15 @@ public final class PalladiumShop extends OriginPlugin {
         }
     }
 
-    private boolean setupEconomy() {
+    private void setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            return false;
+            return;
         }
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
-            return false;
+            return;
         }
         econ = rsp.getProvider();
-        return econ != null;
     }
 
     public static Economy getEconomy() {

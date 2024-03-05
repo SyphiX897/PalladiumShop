@@ -2,18 +2,17 @@ package ir.syphix.palladiumshop.core.shop;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ShopCategory {
         String id;
-        String displayName;
 
-        Map<String, ShopItem> shopItems;
+        HashMap<String, ShopItem> shopItems;
 
-        public ShopCategory(String id, String displayName, List<ShopItem> shopItems) {
+        public ShopCategory(String id, List<ShopItem> shopItems) {
             this.id = id;
-            this.displayName = displayName;
             for (ShopItem shopItem : shopItems) {
                 addItem(shopItem);
             }
@@ -34,11 +33,10 @@ public class ShopCategory {
         public static ShopCategory fromConfig(FileConfiguration config) {
             return new ShopCategory(
                     config.getString("id"),
-                    config.getString("display-name"),
-                    config.getConfigurationSection("shop-items")
+                    config.getConfigurationSection("items")
                             .getKeys(false)
                             .stream()
-                            .map(key -> ShopItem.fromConfig(config.getConfigurationSection("shop-items").getConfigurationSection(key)))
+                            .map(key -> ShopItem.fromConfig(config.getConfigurationSection("items").getConfigurationSection(key)))
                             .toList()
             );
         }

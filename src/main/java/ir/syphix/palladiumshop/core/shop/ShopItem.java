@@ -26,7 +26,7 @@ public class ShopItem {
         public static ShopItem fromConfig(ConfigurationSection section) {
             return new ShopItem(
                     Material.valueOf(section.getString("material")),
-                    ShopPrice.fromConfig(section.getConfigurationSection("shop-price"))
+                    ShopPrice.fromConfig(section.getConfigurationSection("price"))
             );
         }
 

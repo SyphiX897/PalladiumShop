@@ -54,14 +54,6 @@ public class CustomGui {
         inventory = inventories.get(1);
     }
 
-    public CustomGui(String id, int size, String title) {
-        this.id = id;
-        this.size = size;
-        this.inventory = Bukkit.createInventory(null, size, toComponent(title));
-        this.config = null;
-        this.page = 0;
-    }
-
     public void glassShapeIngredient(Character character, ItemStack itemStack, String displayName) {
         itemStack.editMeta(itemMeta -> itemMeta.displayName(toComponent(displayName)));
         ingredient.put(character, itemStack);

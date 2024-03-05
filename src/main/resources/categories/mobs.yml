@@ -1,70 +1,117 @@
+id: mobs
 items:
   ARROW:
-    buy: 100
-    sell: 7
+    material: ARROW
+    price:
+      buy: 100
+      sell: 7
   BONE:
-    buy: 100
-    sell: 6
+    material: BONE
+    price:
+      buy: 100
+      sell: 6
   ROTTEN_FLESH:
-    buy: 120
-    sell: 10
+    material: ROTTEN_FLESH
+    price:
+      buy: 120
+      sell: 10
   SPIDER_EYE:
-    buy: 200
-    sell: 20
+    material: SPIDER_EYE
+    price:
+      buy: 200
+      sell: 20
   STRING:
-    buy: 175
-    sell: 18
+    material: STRING
+    price:
+      buy: 175
+      sell: 18
   GUNPOWDER:
-    buy: 200
-    sell: 22.5
+    material: GUNPOWDER
+    price:
+      buy: 200
+      sell: 22.5
   BLAZE_ROD:
-    buy: 275
-    sell: 25
+    material: BLAZE_ROD
+    price:
+      buy: 275
+      sell: 25
   ENDER_PEARL:
-    buy: 350
-    sell: 30
+    material: ENDER_PEARL
+    price:
+      buy: 350
+      sell: 30
   GHAST_TEAR:
-    buy: 1000
-    sell: 100
+    material: GHAST_TEAR
+    price:
+      buy: 1000
+      sell: 100
   MAGMA_CREAM:
-    buy: 120
-    sell: 8
+    material: MAGMA_CREAM
+    price:
+      buy: 120
+      sell: 8
   SLIME_BALL:
-    buy: 200
-    sell: 25
+    material: SLIME_BALL
+    price:
+      buy: 200
+      sell: 25
   NAUTILUS_SHELL:
-    buy: 10000
-    sell: 550
+    material: NAUTILUS_SHELL
+    price:
+      buy: 10000
+      sell: 550
   PHANTOM_MEMBRANE:
-    buy: 2500
-    sell: 120
+    material: PHANTOM_MEMBRANE
+    price:
+      buy: 2500
+      sell: 120
   TOTEM_OF_UNDYING:
-    buy: 25000
-    sell: 500
+    material: TOTEM_OF_UNDYING
+    price:
+      buy: 25000
+      sell: 500
   SHULKER_SHELL:
-    buy: 15000
-    sell: 450
+    material: SHULKER_SHELL
+    price:
+      buy: 15000
+      sell: 450
   WITHER_SKELETON_SKULL:
-    buy: 40000
-    sell: 250
+    material: WITHER_SKELETON_SKELL
+    price:
+      buy: 40000
+      sell: 250
   INK_SAC:
-    buy: 185
-    sell: 50
+    material: INK_SAC
+    price:
+      buy: 185
+      sell: 50
   GLOW_INK_SAC:
-    buy: 385
-    sell: 65
+    material: GLOW_INK_SAC
+    price:
+      buy: 385
+      sell: 65
   LEATHER:
-    buy: 275
-    sell: 18
+    material: LEATHER
+    price:
+      buy: 275
+      sell: 18
   RABBIT_FOOT:
-    buy: 1000
-    sell: 100
+    material: RABBIT_FOOT
+    price:
+      buy: 1000
+      sell: 100
   RABBIT_HIDE:
-    buy: 85
-    sell: 20
+    material: RABBIT_HIDE
+    price:
+      buy: 85
+      sell: 20
   FEATHER:
-    buy: 120
-    sell: 10
+    material: FEATHER
+    price:
+      buy: 120
+      sell: 10
   EGG:
-    buy: 100
-    sell: 7
+    material: EGG
+    price:
+      buy: 100
+      sell: 7
