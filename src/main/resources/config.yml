@@ -14,3 +14,13 @@ shop:
     - "B       B"
     - "G       G"
     - "GGBBBBBGG"
+
+
+#shop:
+#   itemsColor:
+#     enable: true
+#     color: <gold>
+#   customItemsColor:
+#     enable: true
+#     color: <default> // <gold>
+#

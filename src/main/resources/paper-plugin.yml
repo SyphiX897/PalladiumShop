@@ -7,4 +7,7 @@ dependencies:
     Vault:
       load: BEFORE
       required: true
+    PalladiumItems:
+      load: BEFORE
+      required: false
 api-version: '1.20'

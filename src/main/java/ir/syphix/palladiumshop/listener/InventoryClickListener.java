@@ -5,6 +5,7 @@ import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
+import ir.syrent.origin.paper.Origin;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -43,7 +44,10 @@ public class InventoryClickListener implements Listener {
 
         for (ShopCategory shopCategory : ShopCategories.getCategories()) {
             for (ShopItem shopItem : shopCategory.items()) {
-                if (clickedItem.isSimilar(shopItem.item())) {
+                if ((clickedItem.getItemMeta().getPersistentDataContainer().has(ShopItem.SHOP_ITEM) &&
+                                shopItem.item().getItemMeta().getPersistentDataContainer().has(ShopItem.SHOP_ITEM) && clickedItem.getType() == shopItem.item().getType()) ||
+                        (clickedItem.getItemMeta().getPersistentDataContainer().has(ShopItem.SHOP_CUSTOM_ITEM) &&
+                                shopItem.item().getItemMeta().getPersistentDataContainer().has(ShopItem.SHOP_CUSTOM_ITEM) && clickedItem.getType() == shopItem.item().getType())) {
                     item = shopItem;
                     break;
                 }
@@ -51,24 +55,40 @@ public class InventoryClickListener implements Listener {
         }
 
         if (!gui.getId().equals("sell_gui")) {
+
             if (clickedItem.hasItemMeta()) {
-                if (clickedItem.getItemMeta().getPersistentDataContainer().isEmpty()) {
-                    if (item == null) return;
-                    if (event.getClick().isLeftClick()) {
-                        item.buy(player, 1);
-                    } else if (event.getClick().isRightClick()) {
-                        item.buy(player, 64);
-                    }
-                }
+
                 PersistentDataContainer itemData = clickedItem.getItemMeta().getPersistentDataContainer();
+
                 if (itemData.has(gui.SHOP_PAGE)) {
                     String page = itemData.get(gui.SHOP_PAGE, PersistentDataType.STRING);
                     if (page == null) return;
                     player.openInventory(gui.inventories.get(Integer.valueOf(page)));
 
                 } else if (itemData.has(gui.SHOP_SELL)) {
+                    Origin.broadcast("mame");
 //                    player.openInventory(CustomGuiManager.getCustomGuiById("sell_gui").getInventory());
+
+                } else if (itemData.has(ShopItem.SHOP_ITEM)) {
+                    if (item == null) return;
+                    if (event.getClick().isLeftClick()) {
+                        item.buy(player, 1);
+                    } else if (event.getClick().isRightClick()) {
+                        item.buy(player, 64);
+                    }
+
+                } else if (itemData.has(ShopItem.SHOP_CUSTOM_ITEM)) {
+                    if (item == null) return;
+                    String id = item.item().getItemMeta().getPersistentDataContainer().get(ShopItem.SHOP_CUSTOM_ITEM, PersistentDataType.STRING);
+
+                    if (event.getClick().isLeftClick()) {
+                        item.buy(player, id, 1);
+                    } else if (event.getClick().isRightClick()) {
+                        item.buy(player, id, 64);
+                    }
+
                 }
+
             }
 
         }

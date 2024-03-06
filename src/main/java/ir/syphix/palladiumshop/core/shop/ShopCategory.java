@@ -11,27 +11,23 @@ import java.util.Objects;
 public class ShopCategory {
         String id;
 
-        HashMap<String, ShopItem> shopItems = new HashMap<>();
-        public List<ShopItem> shopItemList = new ArrayList<>();
+        private final List<ShopItem> shopItemList = new ArrayList<>();
+        public HashMap<String, ShopItem> shopItemsHashMap = new HashMap<>();
 
         public ShopCategory(String id, List<ShopItem> shopItems) {
             this.id = id;
             for (ShopItem shopItem : shopItems) {
-                shopItemList.add(shopItem);
                 addItem(shopItem);
             }
         }
 
         public void addItem(ShopItem shopItem) {
-            shopItems.put(shopItem.displayName, shopItem);
+            shopItemList.add(shopItem);
+            shopItemsHashMap.put(shopItem.displayName(), shopItem);
         }
 
-//        public ShopItem getItem(String id) {
-//            return shopItems.get(id);
-//        }
-
         public List<ShopItem> items() {
-            return shopItems.values().stream().toList();
+            return shopItemList;
         }
 
         public static ShopCategory fromConfig(FileConfiguration config) {

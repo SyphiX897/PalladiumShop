@@ -90,7 +90,7 @@ public class CustomGui {
     }
 
     public void completeGui() {
-        List<ItemStack> itemStackList = shopCategory.shopItemList.stream().map(ShopItem::item).toList();
+        List<ItemStack> itemStackList = shopCategory.items().stream().map(ShopItem::guiItemStack).toList();
 
         if (page == 0) {
             int count = 0;
