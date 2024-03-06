@@ -1,6 +1,5 @@
 package ir.syphix.palladiumshop.core.shop;
 
-import ir.syphix.palladiumshop.PalladiumShop;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;

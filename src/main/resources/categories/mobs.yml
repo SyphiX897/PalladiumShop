@@ -76,7 +76,7 @@ items:
       buy: 15000
       sell: 450
   WITHER_SKELETON_SKULL:
-    material: WITHER_SKELETON_SKELL
+    material: WITHER_SKELETON_SKULL
     price:
       buy: 40000
       sell: 250
