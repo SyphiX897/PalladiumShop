@@ -2,16 +2,12 @@ package ir.syphix.palladiumshop.core.shop;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class ShopCategories {
 
         private static final HashMap<String, ShopCategory> categories = new HashMap<>();
-
-        private static final List<File> categoryFiles = new ArrayList<>();
 
         public ShopCategories(List<FileConfiguration> configurations) {
             for (FileConfiguration configuration : configurations) {
@@ -21,7 +17,7 @@ public class ShopCategories {
         }
 
         public static void addCategory(ShopCategory category) {
-            categories.put(category.id, category);
+            categories.put(category.id(), category);
         }
 
         public static ShopCategory getCategory(String id) {

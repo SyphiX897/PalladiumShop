@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class ShopCategory {
-        String id;
+        private final String id;
 
         private final List<ShopItem> shopItemList = new ArrayList<>();
-        public HashMap<String, ShopItem> shopItemsHashMap = new HashMap<>();
+        public HashMap<String, ShopItem> shopItemHashMap = new HashMap<>();
 
         public ShopCategory(String id, List<ShopItem> shopItems) {
             this.id = id;
@@ -23,11 +23,15 @@ public class ShopCategory {
 
         public void addItem(ShopItem shopItem) {
             shopItemList.add(shopItem);
-            shopItemsHashMap.put(shopItem.displayName(), shopItem);
+            shopItemHashMap.put(shopItem.displayName(), shopItem);
         }
 
         public List<ShopItem> items() {
             return shopItemList;
+        }
+
+        public String id() {
+            return id;
         }
 
         public static ShopCategory fromConfig(FileConfiguration config) {

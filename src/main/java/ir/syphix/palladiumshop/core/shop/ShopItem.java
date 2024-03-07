@@ -19,10 +19,11 @@ import java.util.List;
 
 public class ShopItem {
 
-    ItemStack itemStack;
+    private final ItemStack originalItemStack;
+    private final ItemStack itemStack;
     private final ShopPrice shopPrice;
-    public String displayName;
-    String shopItemsColor = Origin.getPlugin().getConfig().getString("shop.itemsColor");
+    private final String displayName;
+    private final String shopItemsColor = Origin.getPlugin().getConfig().getString("shop.itemsColor");
 
     public static NamespacedKey SHOP_ITEM = new NamespacedKey(Origin.getPlugin(), "shop_item");
     public static NamespacedKey SHOP_CUSTOM_ITEM = new NamespacedKey(Origin.getPlugin(), "shop_custom_item");
@@ -32,11 +33,13 @@ public class ShopItem {
         this.shopPrice = shopPrice;
 
         ItemStack dummyItemStack = new ItemStack(material);
-        dummyItemStack.editMeta(itemMeta -> itemMeta.getPersistentDataContainer().set(SHOP_ITEM, PersistentDataType.STRING, "shop_item"));
+        this.originalItemStack = dummyItemStack;
+        dummyItemStack.editMeta(itemMeta -> itemMeta.getPersistentDataContainer().set(SHOP_ITEM, PersistentDataType.BOOLEAN, true));
         this.itemStack = dummyItemStack;
     }
 
     public ShopItem(String displayName, String id, ItemStack itemStack, ShopPrice shopPrice) {
+        this.originalItemStack = itemStack.clone();
         this.displayName = displayName;
         this.shopPrice = shopPrice;
 

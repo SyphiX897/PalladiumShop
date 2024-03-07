@@ -38,6 +38,7 @@ public class InventoryClickListener implements Listener {
         ItemStack clickedItem = event.getCurrentItem();
 
         if (clickedItem == null) return;
+        if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().getPersistentDataContainer().isEmpty()) return;
         if (clickedItem.getType() == Material.LIME_STAINED_GLASS_PANE || clickedItem.getType() == Material.LIGHT_BLUE_STAINED_GLASS_PANE) return;
 
         ShopItem item = null;
@@ -66,7 +67,7 @@ public class InventoryClickListener implements Listener {
                     player.openInventory(gui.inventories.get(Integer.valueOf(page)));
 
                 } else if (itemData.has(gui.SHOP_SELL)) {
-                    Origin.broadcast("mame");
+                    Origin.broadcast("test");
 //                    player.openInventory(CustomGuiManager.getCustomGuiById("sell_gui").getInventory());
 
                 } else if (itemData.has(ShopItem.SHOP_ITEM)) {

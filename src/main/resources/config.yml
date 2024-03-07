@@ -23,4 +23,5 @@ shop:
 #   customItemsColor:
 #     enable: true
 #     color: <default> // <gold>
-#
+#   itemsLore
+#     - "<gradient:dark_green:green>Buy: <buy>"
