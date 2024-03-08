@@ -31,9 +31,9 @@ public class CustomGui {
     private final HashMap<Character, ItemStack> ingredient = new HashMap<>();
 
     public final HashMap<Integer, Inventory> inventories = new HashMap<>();
-    public NamespacedKey SHOP_PAGE = new NamespacedKey(Origin.getPlugin(), "shop_page");
-    public NamespacedKey SHOP_GLASS = new NamespacedKey(Origin.getPlugin(), "shop_item");
-    public NamespacedKey SHOP_SELL = new NamespacedKey(Origin.getPlugin(), "shop_sell");
+    public static NamespacedKey SHOP_PAGE = new NamespacedKey(Origin.getPlugin(), "shop_page");
+    public static NamespacedKey SHOP_GLASS = new NamespacedKey(Origin.getPlugin(), "shop_item");
+    public static NamespacedKey SHOP_SELL = new NamespacedKey(Origin.getPlugin(), "shop_sell");
 
     public CustomGui(String id, ShopCategory shopCategory, int size, String title) {
         this.id = id;
@@ -52,6 +52,15 @@ public class CustomGui {
         for (int i = 0; i < (this.page + 1); i++) {
             inventories.put((i + 1), Bukkit.createInventory(null, size, toComponent(title + " <dark_gray>(Page: " + (i + 1) + ")")));
         }
+        inventory = inventories.get(1);
+    }
+
+    public CustomGui(String id, int size, String title) {
+        this.id = id;
+        this.size = size;
+        this.page = 0;
+        this.shopCategory = null;
+        inventories.put(1, Bukkit.createInventory(null, size, toComponent(title)));
         inventory = inventories.get(1);
     }
 

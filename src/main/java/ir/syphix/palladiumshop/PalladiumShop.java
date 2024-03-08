@@ -4,6 +4,7 @@ import ir.syphix.palladiumshop.annotation.GuiHandlerProcessor;
 import ir.syphix.palladiumshop.command.OpenGuiCommand;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.listener.InventoryClickListener;
+import ir.syphix.palladiumshop.listener.InventoryCloseListener;
 import ir.syphix.palladiumshop.utils.CustomItems;
 import ir.syphix.palladiumshop.utils.YamlConfig;
 import ir.syrent.origin.paper.Origin;
@@ -35,6 +36,7 @@ public final class PalladiumShop extends OriginPlugin {
         new OpenGuiCommand();
 
         Origin.registerListener(new InventoryClickListener());
+        Origin.registerListener(new InventoryCloseListener());
     }
 
     @Override

@@ -31,9 +31,9 @@ public class ShopItem {
     public ShopItem(String displayName, Material material, ShopPrice shopPrice) {
         this.displayName = displayName;
         this.shopPrice = shopPrice;
+        this.originalItemStack = new ItemStack(material);
 
         ItemStack dummyItemStack = new ItemStack(material);
-        this.originalItemStack = dummyItemStack;
         dummyItemStack.editMeta(itemMeta -> itemMeta.getPersistentDataContainer().set(SHOP_ITEM, PersistentDataType.BOOLEAN, true));
         this.itemStack = dummyItemStack;
     }
@@ -106,6 +106,10 @@ public class ShopItem {
 
     public ShopPrice shopPrice() {
         return shopPrice;
+    }
+
+    public ItemStack originalItemStack() {
+        return originalItemStack;
     }
 
     public ItemStack guiItemStack() {
