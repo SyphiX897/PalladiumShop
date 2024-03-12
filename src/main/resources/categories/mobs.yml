@@ -1,4 +1,5 @@
 id: mobs
+title: "<#00aeff>Mobs Drop"
 items:
   ARROW:
     material: ARROW

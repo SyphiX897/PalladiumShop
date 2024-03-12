@@ -20,6 +20,6 @@ public class ShopPrice {
     }
 
         public static ShopPrice fromConfig(ConfigurationSection section) {
-            return new ShopPrice(section.getDouble("buy"), section.getDouble("sell"));
+            return new ShopPrice(section.getDouble("buy", -1), section.getDouble("sell", -1));
         }
 }

@@ -1,3 +1,6 @@
+
+prefix: "<#00aeff>PalladiumShop <gray>"
+
 categories:
   - "mobs"
   - "ores"
@@ -10,10 +13,8 @@ shop:
       color: "<gold>"
     customItems:
       enabled: true
-      color: "<gold>" # set it to "" to disable
-  lore:
-    
-  ingredient:
+      color: "<gold>"
+  ingredients:
     - "B;LIGHT_BLUE_STAINED_GLASS_PANE"
     - "G;LIME_STAINED_GLASS_PANE"
   shape:
@@ -23,14 +24,3 @@ shop:
     - "B       B"
     - "G       G"
     - "GGBBBBBGG"
-
-
-#shop:
-#   itemsColor:
-#     enable: true
-#     color: <gold>
-#   customItemsColor:
-#     enable: true
-#     color: <default> // <gold>
-#   itemsLore
-#     - "<gradient:dark_green:green>Buy: <buy>"

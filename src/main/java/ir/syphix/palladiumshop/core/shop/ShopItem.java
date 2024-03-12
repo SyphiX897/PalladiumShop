@@ -2,6 +2,7 @@ package ir.syphix.palladiumshop.core.shop;
 
 import ir.syphix.palladiumshop.PalladiumShop;
 import ir.syphix.palladiumshop.utils.CustomItems;
+import ir.syphix.palladiumshop.utils.StringUtils;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.utils.ComponentUtils;
 import net.kyori.adventure.text.Component;
@@ -86,7 +87,7 @@ public class ShopItem {
                 player.sendMessage(toComponent("<gradient:dark_red:red>Your inventory is full!"));
             } else {
                 PalladiumShop.getEconomy().withdrawPlayer(player, buyPrice);
-                ItemStack dummyItemStack = CustomItems.customItemList.get(id);
+                ItemStack dummyItemStack = CustomItems.customItemList.get(id).clone();
                 dummyItemStack.setAmount(amount);
                 player.getInventory().addItem(dummyItemStack);
             }
@@ -114,15 +115,31 @@ public class ShopItem {
 
     public ItemStack guiItemStack() {
         ItemStack dummyItemStack = itemStack.clone();
-        String displayName = (shopItemsColor + displayName());
+        String displayName = (shopItemsColor + StringUtils.toFormattedName(displayName()));
         String customModelData;
         List<Component> itemStackLore = new ArrayList<>();
         if (dummyItemStack.getItemMeta().hasLore()) {
             itemStackLore = dummyItemStack.getItemMeta().lore();
         }
         if (itemStackLore == null) return dummyItemStack;
-        itemStackLore.add(toComponent("<gradient:dark_green:green>Buy: " + shopPrice.buyPrice() + "$"));
-        itemStackLore.add(toComponent("<gradient:dark_red:red>Sell: " + shopPrice.sellPrice() + "$"));
+
+        String buy;
+        String sell;
+
+        if (shopPrice.sellPrice() == -1) {
+            sell = "Unsellable";
+        } else {
+            sell = shopPrice.sellPrice() + "$";
+        }
+        if (shopPrice.buyPrice() == -1) {
+            buy = "Unpurchasable";
+        } else {
+            buy = shopPrice.buyPrice() + "$";
+        }
+
+
+        itemStackLore.add(toComponent("<gradient:dark_green:green>Buy: " + buy));
+        itemStackLore.add(toComponent("<gradient:dark_red:red>Sell: " + sell));
 
         if (itemStack.getItemMeta().hasCustomModelData()) {
             customModelData = String.valueOf(itemStack.getItemMeta().getCustomModelData());

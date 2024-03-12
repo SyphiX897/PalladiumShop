@@ -33,6 +33,7 @@ public class OpenGuiCommand extends Command {
                     Player player = context.getSender().player();
                     Optional<String> targetOptional = context.getOptional("player");
                     String menuName = context.get("menu");
+                    if (menuName.isEmpty()) return;
 
                     if (targetOptional.isPresent()) {
                         Player targetPlayer = Bukkit.getPlayerExact(targetOptional.get());

@@ -5,10 +5,10 @@ import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -19,7 +19,17 @@ public class InventoryClickListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getInventory() == CustomGuiManager.getCustomGuiById("sell_gui").getInventory()) return;
+        ItemStack clickedItem = event.getCurrentItem();
+
+        if (event.getInventory() == CustomGuiManager.getCustomGuiById("sell_gui").getInventory()) {
+            if (clickedItem == null) return;
+            if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_GLASS)) {
+                event.setCancelled(true);
+                return;
+            }
+            return;
+        }
+
         boolean isShop = false;
         CustomGui gui = null;
         for (CustomGui customGui : CustomGuiManager.getGuis()) {
@@ -35,11 +45,10 @@ public class InventoryClickListener implements Listener {
 
         event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
-        ItemStack clickedItem = event.getCurrentItem();
 
         if (clickedItem == null) return;
         if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().getPersistentDataContainer().isEmpty()) return;
-        if (clickedItem.getType() == Material.LIME_STAINED_GLASS_PANE || clickedItem.getType() == Material.LIGHT_BLUE_STAINED_GLASS_PANE) return;
+        if (clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_GLASS)) return;
 
         ShopItem item = null;
 
@@ -70,9 +79,14 @@ public class InventoryClickListener implements Listener {
 
             } else if (itemData.has(ShopItem.SHOP_ITEM)) {
                 if (item == null) return;
-                if (event.getClick().isLeftClick()) {
+                ClickType clickType = event.getClick();
+                if (clickType.isLeftClick() && clickType.isShiftClick()) {
+                    item.buy(player, 32);
+                } else if (clickType.isRightClick() && clickType.isShiftClick()) {
+                    item.buy(player, 128);
+                } else if (clickType.isLeftClick()) {
                     item.buy(player, 1);
-                } else if (event.getClick().isRightClick()) {
+                } else if (clickType.isRightClick()) {
                     item.buy(player, 64);
                 }
 
@@ -80,9 +94,14 @@ public class InventoryClickListener implements Listener {
                 if (item == null) return;
                 String id = item.item().getItemMeta().getPersistentDataContainer().get(ShopItem.SHOP_CUSTOM_ITEM, PersistentDataType.STRING);
 
-                if (event.getClick().isLeftClick()) {
+                ClickType clickType = event.getClick();
+                if (clickType.isLeftClick() && clickType.isShiftClick()) {
+                    item.buy(player, id, 32);
+                } else if (clickType.isRightClick() && clickType.isShiftClick()) {
+                    item.buy(player, id, 128);
+                } else if (clickType.isLeftClick()) {
                     item.buy(player, id, 1);
-                } else if (event.getClick().isRightClick()) {
+                } else if (clickType.isRightClick()) {
                     item.buy(player, id, 64);
                 }
 

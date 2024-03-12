@@ -32,7 +32,7 @@ public class CustomGui {
 
     public final HashMap<Integer, Inventory> inventories = new HashMap<>();
     public static NamespacedKey SHOP_PAGE = new NamespacedKey(Origin.getPlugin(), "shop_page");
-    public static NamespacedKey SHOP_GLASS = new NamespacedKey(Origin.getPlugin(), "shop_item");
+    public static NamespacedKey SHOP_GLASS = new NamespacedKey(Origin.getPlugin(), "shop_glass");
     public static NamespacedKey SHOP_SELL = new NamespacedKey(Origin.getPlugin(), "shop_sell");
 
     public CustomGui(String id, ShopCategory shopCategory, int size, String title) {
@@ -71,7 +71,7 @@ public class CustomGui {
         });
         ingredient.put(character, itemStack);
     }
-    public void glassShape(String... shape) {
+    public void glassShape(List<String> shape) {
         List<Character> shapeList = new ArrayList<>();
         for (String s : shape) {
             for (char c : s.toCharArray()) {
@@ -145,10 +145,6 @@ public class CustomGui {
 
     public Inventory getInventory() {
         return inventory;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public void registerGui() {

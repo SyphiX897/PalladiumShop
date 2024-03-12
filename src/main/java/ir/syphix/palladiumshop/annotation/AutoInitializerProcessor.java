@@ -5,11 +5,11 @@ import org.reflections.Reflections;
 import java.lang.reflect.Constructor;
 import java.util.List;
 
-public class GuiHandlerProcessor {
+public class AutoInitializerProcessor {
 
     public static void process() {
         Reflections reflections = new Reflections("ir.syphix.palladiumshop");
-        List<Class<?>> annotatedClasses =reflections.getTypesAnnotatedWith(GuiHandler.class).stream().toList();
+        List<Class<?>> annotatedClasses =reflections.getTypesAnnotatedWith(AutoInitializer.class).stream().toList();
 
         for (Class<?> annotatedClass : annotatedClasses) {
             createNewInstance(annotatedClass);

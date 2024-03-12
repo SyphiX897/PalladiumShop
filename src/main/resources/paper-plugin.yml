@@ -10,4 +10,16 @@ dependencies:
     PalladiumItems:
       load: BEFORE
       required: false
+    Slimefun:
+      load: BEFORE
+      required: false
+    WildTools:
+      load: BEFORE
+      required: false
+    WildChests:
+      load: BEFORE
+      required: false
+    ItemsAdder:
+      load: BEFORE
+      required: false
 api-version: '1.20'

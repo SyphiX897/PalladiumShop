@@ -1,4 +1,5 @@
 id: "ores"
+title: "<#00aeff>Ores"
 items:
   NETHERITE_INGOT:
     material: NETHERITE_INGOT

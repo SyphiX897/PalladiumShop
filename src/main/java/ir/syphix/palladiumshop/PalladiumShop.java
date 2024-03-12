@@ -1,6 +1,6 @@
 package ir.syphix.palladiumshop;
 
-import ir.syphix.palladiumshop.annotation.GuiHandlerProcessor;
+import ir.syphix.palladiumshop.annotation.AutoInitializerProcessor;
 import ir.syphix.palladiumshop.command.OpenGuiCommand;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.listener.InventoryClickListener;
@@ -28,23 +28,18 @@ public final class PalladiumShop extends OriginPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        addConfigFiles();
+        addCategoryFiles();
         setupEconomy();
-        CustomItems.addItems();
+
         new ShopCategories(configList.values().stream().toList());
-        GuiHandlerProcessor.process();
+        AutoInitializerProcessor.process();
         new OpenGuiCommand();
 
         Origin.registerListener(new InventoryClickListener());
         Origin.registerListener(new InventoryCloseListener());
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
-
-    private void addConfigFiles() {
+    private void addCategoryFiles() {
         List<String> filesList = getConfig().getStringList("categories");
         File rootDirectory = new File(Origin.getPlugin().getDataFolder(), "categories");
         if (!rootDirectory.exists()) {
@@ -69,7 +64,7 @@ public final class PalladiumShop extends OriginPlugin {
     }
 
     private void setupEconomy() {
-        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+        if (!Origin.hasPlugin("Vault")) {
             return;
         }
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
@@ -81,5 +76,9 @@ public final class PalladiumShop extends OriginPlugin {
 
     public static Economy getEconomy() {
         return econ;
+    }
+
+    public static String prefix() {
+        return getInstance().getConfig().getString("prefix");
     }
 }
