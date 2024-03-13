@@ -1,0 +1,9 @@
+prefix: "<#00aeff>PalladiumShop<gray> >> "
+
+need_permission: "<gradient:dark_red:red>You don't have enough permission to perform this command!"
+player_not_found: "<gradient:dark_red:red>Player not found!"
+menu_not_found: "<gradient:dark_red:red>Menu not found!"
+sell: "<dark_green>You have sold <yellow>x<item-amount></yellow> items. <gray>(<green>+<total-price>$<gray>)"
+buy: "<dark_green>You have bought <yellow>x<item-amount> <item-name></yellow>. <gray>(<red>-<total-price>$<gray>)"
+not_enough_money: "<gradient:dark_red:red>You don't have enough money to buy this item!"
+inventory_is_full: "<gradient:dark_red:red>Your inventory is full!"

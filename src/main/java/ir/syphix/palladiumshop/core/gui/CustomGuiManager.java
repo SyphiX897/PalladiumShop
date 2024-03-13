@@ -1,7 +1,5 @@
 package ir.syphix.palladiumshop.core.gui;
 
-import ir.syphix.palladiumshop.core.gui.CustomGui;
-
 import java.util.HashMap;
 import java.util.List;
 

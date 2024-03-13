@@ -1,13 +1,14 @@
 package ir.syphix.palladiumshop.core.shop;
 
 import ir.syphix.palladiumshop.PalladiumShop;
-import ir.syphix.palladiumshop.utils.CustomItems;
-import ir.syphix.palladiumshop.utils.StringUtils;
+import ir.syphix.palladiumshop.item.CustomItems;
+import ir.syphix.palladiumshop.message.Messages;
+import ir.syphix.palladiumshop.utils.Utils;
 import ir.syrent.origin.paper.Origin;
-import ir.syrent.origin.paper.utils.ComponentUtils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
@@ -35,7 +36,7 @@ public class ShopItem {
         this.originalItemStack = new ItemStack(material);
 
         ItemStack dummyItemStack = new ItemStack(material);
-        dummyItemStack.editMeta(itemMeta -> itemMeta.getPersistentDataContainer().set(SHOP_ITEM, PersistentDataType.BOOLEAN, true));
+        dummyItemStack.editMeta(itemMeta -> itemMeta.getPersistentDataContainer().set(SHOP_ITEM, PersistentDataType.STRING, ""));
         this.itemStack = dummyItemStack;
     }
 
@@ -65,15 +66,19 @@ public class ShopItem {
 
         if (playerBalance >= buyPrice) {
             if (player.getInventory().firstEmpty() == -1) {
-                player.sendMessage(toComponent("<gradient:dark_red:red>Your inventory is full!"));
+                player.sendMessage(Utils.toFormattedComponent(Messages.INVENTORY_IS_FULL));
             } else {
                 PalladiumShop.getEconomy().withdrawPlayer(player, buyPrice);
                 ItemStack dummyItemStack = new ItemStack(itemStack.getType());
                 dummyItemStack.setAmount(amount);
                 player.getInventory().addItem(dummyItemStack);
+                player.sendMessage(Utils.toFormattedComponent(Messages.BUY,
+                        Placeholder.unparsed("item-amount", String.valueOf(amount)),
+                        Placeholder.unparsed("item-name", Utils.toFormattedName(displayName)),
+                        Placeholder.unparsed("total-price", String.valueOf(buyPrice))));
             }
         } else {
-            player.sendMessage(ComponentUtils.component("<gradient:dark_red:red>You don't have enough money to buy this item!"));
+            player.sendMessage(Utils.toFormattedComponent(Messages.NOT_ENOUGH_MONEY));
         }
 
     }
@@ -84,15 +89,19 @@ public class ShopItem {
 
         if (playerBalance >= buyPrice) {
             if (player.getInventory().firstEmpty() == -1) {
-                player.sendMessage(toComponent("<gradient:dark_red:red>Your inventory is full!"));
+                player.sendMessage(Utils.toFormattedComponent(Messages.INVENTORY_IS_FULL));
             } else {
                 PalladiumShop.getEconomy().withdrawPlayer(player, buyPrice);
                 ItemStack dummyItemStack = CustomItems.customItemList.get(id).clone();
                 dummyItemStack.setAmount(amount);
                 player.getInventory().addItem(dummyItemStack);
+                player.sendMessage(Utils.toFormattedComponent(Messages.BUY,
+                        Placeholder.unparsed("item-amount", String.valueOf(amount)),
+                        Placeholder.unparsed("item-name", Utils.toFormattedName(displayName)),
+                        Placeholder.unparsed("total-price", String.valueOf(buyPrice))));
             }
         } else {
-            player.sendMessage(ComponentUtils.component("<gradient:dark_red:red>You don't have enough money to buy this item!"));
+            player.sendMessage(Utils.toFormattedComponent(Messages.NOT_ENOUGH_MONEY));
         }
 
     }
@@ -115,7 +124,7 @@ public class ShopItem {
 
     public ItemStack guiItemStack() {
         ItemStack dummyItemStack = itemStack.clone();
-        String displayName = (shopItemsColor + StringUtils.toFormattedName(displayName()));
+        String displayName = (shopItemsColor + Utils.toFormattedName(displayName()));
         String customModelData;
         List<Component> itemStackLore = new ArrayList<>();
         if (dummyItemStack.getItemMeta().hasLore()) {

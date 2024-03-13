@@ -25,9 +25,10 @@ public class CustomGui {
     private final ShopCategory shopCategory;
     private final String id;
     private final int size;
-    private final int page;
+    private int page = 0;
 
 
+    private final int freeSpace = freeSpace();
     private final HashMap<Character, ItemStack> ingredient = new HashMap<>();
 
     public final HashMap<Integer, Inventory> inventories = new HashMap<>();
@@ -39,28 +40,25 @@ public class CustomGui {
         this.id = id;
         this.size = size;
         this.shopCategory = shopCategory;
-        int itemAmount = shopCategory.items().size();
 
-        int page;
-        if (itemAmount % 28 == 0 && itemAmount != 0) {
-            page = (itemAmount / 28) - 1;
+        if (shopCategory != null) {
+            int itemAmount = shopCategory.items().size();
+
+            int page;
+            if (itemAmount % freeSpace == 0 && itemAmount != 0) {
+                page = (itemAmount / freeSpace) - 1;
+            } else {
+                page = itemAmount / freeSpace;
+            }
+            this.page = page;
+
+            for (int i = 0; i < (this.page + 1); i++) {
+                inventories.put((i + 1), Bukkit.createInventory(null, size, toComponent(title + " <dark_gray>(Page: " + (i + 1) + ")")));
+            }
         } else {
-            page = itemAmount / 28;
+            inventories.put(1, Bukkit.createInventory(null, size, toComponent(title)));
         }
-        this.page = page;
 
-        for (int i = 0; i < (this.page + 1); i++) {
-            inventories.put((i + 1), Bukkit.createInventory(null, size, toComponent(title + " <dark_gray>(Page: " + (i + 1) + ")")));
-        }
-        inventory = inventories.get(1);
-    }
-
-    public CustomGui(String id, int size, String title) {
-        this.id = id;
-        this.size = size;
-        this.page = 0;
-        this.shopCategory = null;
-        inventories.put(1, Bukkit.createInventory(null, size, toComponent(title)));
         inventory = inventories.get(1);
     }
 
@@ -109,13 +107,13 @@ public class CustomGui {
                 inventory.setItem(i, itemStackList.get(count));
                 count++;
             }
-            inventory.setItem(49, getSellGuiItemStack());
+            inventory.setItem(49, sellGuiItemStack());
             return;
         }
 
         int count = 0;
         for (int key : inventories.keySet()) {
-            for (int i = 0; i < 28; i++) {
+            for (int i = 0; i < freeSpace; i++) {
                 if (count >= itemStackList.size()) break;
                 int firstEmpty = inventories.get(key).firstEmpty();
                 inventories.get(key).setItem(firstEmpty, itemStackList.get(count));
@@ -139,19 +137,22 @@ public class CustomGui {
             }
 
 
-            inventories.get(key).setItem(49, getSellGuiItemStack());
+            inventories.get(key).setItem(49, sellGuiItemStack());
         }
     }
 
-    public Inventory getInventory() {
+    public Inventory inventory() {
         return inventory;
+    }
+    public String id() {
+        return id;
     }
 
     public void registerGui() {
         CustomGuiManager.guis.put(id, this);
     }
 
-    private ItemStack getSellGuiItemStack() {
+    private ItemStack sellGuiItemStack() {
         ItemStack sellItemStack = new ItemStack(Material.MINECART);
         sellItemStack.editMeta(itemMeta -> {
             itemMeta.displayName(toComponent("<#00aeff>Sell Menu"));
@@ -161,6 +162,19 @@ public class CustomGui {
         });
 
         return sellItemStack;
+    }
+
+    public static int freeSpace() {
+        int count = 0;
+        for (String shape : Origin.getPlugin().getConfig().getStringList("shop.shape")) {
+            for (Character character : shape.toCharArray()) {
+                if (character != ' ') {
+                    count++;
+                }
+            }
+        }
+
+        return (54 - count);
     }
 
     public Component toComponent(String content) {

@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class SellGui extends CustomGui {
 
     public SellGui() {
-        super("sell_gui", 54, "<#00aeff>Sell Menu");
+        super("sell_gui", null, 54, "<#00aeff>Sell Menu");
 
         glassShapeIngredient('B', new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE), " ");
         glassShapeIngredient('G', new ItemStack(Material.LIME_STAINED_GLASS_PANE), " ");

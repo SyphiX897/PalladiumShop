@@ -3,24 +3,18 @@ package ir.syphix.palladiumshop;
 import ir.syphix.palladiumshop.annotation.AutoInitializerProcessor;
 import ir.syphix.palladiumshop.command.OpenGuiCommand;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
+import ir.syphix.palladiumshop.item.CustomItems;
 import ir.syphix.palladiumshop.listener.InventoryClickListener;
 import ir.syphix.palladiumshop.listener.InventoryCloseListener;
-import ir.syphix.palladiumshop.utils.CustomItems;
-import ir.syphix.palladiumshop.utils.YamlConfig;
+import ir.syphix.palladiumshop.message.Messages;
+import ir.syphix.palladiumshop.utils.FileManager;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.OriginPlugin;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.apache.logging.log4j.message.Message;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
 public final class PalladiumShop extends OriginPlugin {
-
-    public static HashMap<String, FileConfiguration> configList = new HashMap<>();
 
     private static Economy econ = null;
 
@@ -28,39 +22,18 @@ public final class PalladiumShop extends OriginPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        addCategoryFiles();
+        new Messages();
+        FileManager.addConfigFiles();
         setupEconomy();
 
-        new ShopCategories(configList.values().stream().toList());
+        CustomItems.addItems();
+        new ShopCategories(FileManager.categories());
+
         AutoInitializerProcessor.process();
         new OpenGuiCommand();
 
         Origin.registerListener(new InventoryClickListener());
         Origin.registerListener(new InventoryCloseListener());
-    }
-
-    private void addCategoryFiles() {
-        List<String> filesList = getConfig().getStringList("categories");
-        File rootDirectory = new File(Origin.getPlugin().getDataFolder(), "categories");
-        if (!rootDirectory.exists()) {
-            try {
-                rootDirectory.mkdir();
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-        }
-        for (String fileName : filesList) {
-            if (Arrays.stream(rootDirectory.listFiles()).map(File::getName).toList().contains(fileName + ".yml")) {
-                YamlConfig itemConfig = new YamlConfig(rootDirectory, (fileName + ".yml"), false);
-                FileConfiguration configuration = itemConfig.getConfig();
-                configList.put(fileName, configuration);
-                continue;
-            }
-            YamlConfig itemConfig = new YamlConfig(rootDirectory, (fileName + ".yml"), false);
-            saveResource("categories" + File.separator + fileName + ".yml", false);
-            FileConfiguration configuration = itemConfig.getConfig();
-            configList.put(fileName, configuration);
-        }
     }
 
     private void setupEconomy() {
@@ -81,4 +54,5 @@ public final class PalladiumShop extends OriginPlugin {
     public static String prefix() {
         return getInstance().getConfig().getString("prefix");
     }
+
 }

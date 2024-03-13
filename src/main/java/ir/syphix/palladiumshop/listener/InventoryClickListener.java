@@ -21,7 +21,7 @@ public class InventoryClickListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         ItemStack clickedItem = event.getCurrentItem();
 
-        if (event.getInventory() == CustomGuiManager.getCustomGuiById("sell_gui").getInventory()) {
+        if (event.getInventory() == CustomGuiManager.getCustomGuiById("sell_gui").inventory()) {
             if (clickedItem == null) return;
             if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_GLASS)) {
                 event.setCancelled(true);
@@ -75,7 +75,7 @@ public class InventoryClickListener implements Listener {
                 player.openInventory(gui.inventories.get(Integer.valueOf(page)));
 
             } else if (itemData.has(CustomGui.SHOP_SELL)) {
-                player.openInventory(CustomGuiManager.getCustomGuiById("sell_gui").getInventory());
+                player.openInventory(CustomGuiManager.getCustomGuiById("sell_gui").inventory());
 
             } else if (itemData.has(ShopItem.SHOP_ITEM)) {
                 if (item == null) return;

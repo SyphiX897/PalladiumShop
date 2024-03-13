@@ -1,0 +1,11 @@
+name: PalladiumShop
+version: '${version}'
+main: ir.syphix.palladiumshop.PalladiumShop
+depend:
+  - Vault
+softdepend:
+  - PalladiumItems
+  - Slimefun
+  - WildTools
+  - ItemsAdder
+api-version: '1.17'

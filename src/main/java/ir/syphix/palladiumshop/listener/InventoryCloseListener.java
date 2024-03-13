@@ -1,12 +1,13 @@
 package ir.syphix.palladiumshop.listener;
 
-import ir.syphix.palladiumshop.PalladiumShop;
 import ir.syphix.palladiumshop.core.gui.CustomGui;
 import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
-import ir.syrent.origin.paper.utils.ComponentUtils;
+import ir.syphix.palladiumshop.message.Messages;
+import ir.syphix.palladiumshop.utils.Utils;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,12 +17,9 @@ import org.bukkit.inventory.ItemStack;
 
 public class InventoryCloseListener implements Listener {
 
-
-    String prefix = PalladiumShop.prefix();
-
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
-        if (event.getInventory() != CustomGuiManager.getCustomGuiById("sell_gui").getInventory()) return;
+        if (event.getInventory() != CustomGuiManager.getCustomGuiById("sell_gui").inventory()) return;
         if (!(event.getPlayer() instanceof Player player)) return;
         Inventory inventory = event.getInventory();
         double totalPrice = 0;
@@ -56,6 +54,8 @@ public class InventoryCloseListener implements Listener {
         }
 
         if (itemAmount <= 0) return;
-        player.sendMessage(ComponentUtils.component(String.format("%s>> <gradient:dark_green:green>You have sold <yellow>%dx</yellow> items for <yellow>%s</yellow>$", prefix, itemAmount, totalPrice)));
+        player.sendMessage(Utils.toFormattedComponent(Messages.SELL,
+                Placeholder.unparsed("item-amount", String.valueOf(itemAmount)),
+                Placeholder.unparsed("total-price", String.valueOf(totalPrice))));
     }
 }
