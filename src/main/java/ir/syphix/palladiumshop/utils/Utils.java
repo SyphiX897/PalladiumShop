@@ -24,10 +24,15 @@ public class Utils {
         return Arrays.stream(name.split("_"))
                 .map(t -> t.charAt(0) + t.substring(1).toLowerCase())
                 .collect(Collectors.joining(" "));
+
     }
 
     public static Component toFormattedComponent(String message, TagResolver... placeholders) {
-        return miniMessage.deserialize(String.format("%s%s", Messages.PREFIX, message), placeholders).decoration(TextDecoration.ITALIC, false);
+        return Component.empty().decoration(TextDecoration.ITALIC, false).append(toComponent(String.format("%s%s", Messages.PREFIX, message), placeholders));
+    }
+
+    public static Component toComponent(String content, TagResolver... placeholders) {
+        return miniMessage.deserialize(content, placeholders);
     }
 
 }

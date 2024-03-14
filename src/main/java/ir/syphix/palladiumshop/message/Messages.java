@@ -15,6 +15,7 @@ public class Messages {
     public static String BUY;
     public static String NOT_ENOUGH_MONEY;
     public static String INVENTORY_IS_FULL;
+    public static String RELOAD;
 
 
     public Messages() {
@@ -26,6 +27,7 @@ public class Messages {
         BUY = getMessage("buy");
         NOT_ENOUGH_MONEY = getMessage("not_enough_money");
         INVENTORY_IS_FULL = getMessage("inventory_is_full");
+        RELOAD = getMessage("reload");
     }
 
     private String getMessage(String path) {

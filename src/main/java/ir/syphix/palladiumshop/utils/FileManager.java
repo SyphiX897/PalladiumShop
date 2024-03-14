@@ -14,7 +14,7 @@ public class FileManager {
 
     private static final HashMap<String, FileConfiguration> categoriesFile = new HashMap<>();
 
-    public static void addConfigFiles() {
+    public static void addCategories() {
         List<String> filesList = PalladiumShop.getInstance().getConfig().getStringList("categories");
         File rootDirectory = new File(Origin.getPlugin().getDataFolder(), "categories");
         if (!rootDirectory.exists()) {

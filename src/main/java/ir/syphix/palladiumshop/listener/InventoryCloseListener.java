@@ -51,6 +51,7 @@ public class InventoryCloseListener implements Listener {
             item.sell(player, itemStack.getAmount());
             itemAmount += itemStack.getAmount();
             totalPrice += (itemStack.getAmount() * item.shopPrice().sellPrice());
+
         }
 
         if (itemAmount <= 0) return;

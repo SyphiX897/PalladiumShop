@@ -1,7 +1,7 @@
 package ir.syphix.palladiumshop;
 
 import ir.syphix.palladiumshop.annotation.AutoInitializerProcessor;
-import ir.syphix.palladiumshop.command.OpenGuiCommand;
+import ir.syphix.palladiumshop.command.MainCommand;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.item.CustomItems;
 import ir.syphix.palladiumshop.listener.InventoryClickListener;
@@ -11,7 +11,6 @@ import ir.syphix.palladiumshop.utils.FileManager;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.OriginPlugin;
 import net.milkbowl.vault.economy.Economy;
-import org.apache.logging.log4j.message.Message;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 public final class PalladiumShop extends OriginPlugin {
@@ -22,16 +21,10 @@ public final class PalladiumShop extends OriginPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        new Messages();
-        FileManager.addConfigFiles();
         setupEconomy();
+        initialize();
 
-        CustomItems.addItems();
-        new ShopCategories(FileManager.categories());
-
-        AutoInitializerProcessor.process();
-        new OpenGuiCommand();
-
+        new MainCommand();
         Origin.registerListener(new InventoryClickListener());
         Origin.registerListener(new InventoryCloseListener());
     }
@@ -51,8 +44,12 @@ public final class PalladiumShop extends OriginPlugin {
         return econ;
     }
 
-    public static String prefix() {
-        return getInstance().getConfig().getString("prefix");
+    public static void initialize() {
+        new Messages();
+        FileManager.addCategories();
+        CustomItems.addItems();
+        ShopCategories.registerCategories();
+        AutoInitializerProcessor.process();
     }
 
 }

@@ -7,3 +7,4 @@ sell: "<dark_green>You have sold <yellow>x<item-amount></yellow> items. <gray>(<
 buy: "<dark_green>You have bought <yellow>x<item-amount> <item-name></yellow>. <gray>(<red>-<total-price>$<gray>)"
 not_enough_money: "<gradient:dark_red:red>You don't have enough money to buy this item!"
 inventory_is_full: "<gradient:dark_red:red>Your inventory is full!"
+reload: "<gradient:dark_green:green>Plugin successfully reloaded."

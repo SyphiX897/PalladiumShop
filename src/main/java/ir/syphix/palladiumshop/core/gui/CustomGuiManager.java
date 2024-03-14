@@ -1,5 +1,7 @@
 package ir.syphix.palladiumshop.core.gui;
 
+import it.unimi.dsi.fastutil.Hash;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,4 +16,5 @@ public class CustomGuiManager {
     public static List<CustomGui> getGuis() {
         return guis.values().stream().toList();
     }
+
 }

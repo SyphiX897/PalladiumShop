@@ -5,6 +5,8 @@ import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
+import ir.syrent.origin.paper.Origin;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -32,6 +34,7 @@ public class InventoryClickListener implements Listener {
 
         boolean isShop = false;
         CustomGui gui = null;
+
         for (CustomGui customGui : CustomGuiManager.getGuis()) {
             for (Inventory inventory : customGui.inventories.values()) {
                 if (event.getWhoClicked().getOpenInventory().getTopInventory() == inventory) {
@@ -41,6 +44,7 @@ public class InventoryClickListener implements Listener {
                 }
             }
         }
+
         if (!isShop) return;
 
         event.setCancelled(true);
@@ -66,7 +70,6 @@ public class InventoryClickListener implements Listener {
 
 
         if (clickedItem.hasItemMeta()) {
-
             PersistentDataContainer itemData = clickedItem.getItemMeta().getPersistentDataContainer();
 
             if (itemData.has(CustomGui.SHOP_PAGE)) {

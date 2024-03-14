@@ -1,5 +1,6 @@
 package ir.syphix.palladiumshop.core.shop;
 
+import ir.syphix.palladiumshop.utils.FileManager;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashMap;
@@ -9,8 +10,8 @@ public class ShopCategories {
 
         private static final HashMap<String, ShopCategory> categories = new HashMap<>();
 
-        public ShopCategories(List<FileConfiguration> configurations) {
-            for (FileConfiguration configuration : configurations) {
+        public static void registerCategories() {
+            for (FileConfiguration configuration : FileManager.categories()) {
                 ShopCategory category = ShopCategory.fromConfig(configuration);
                 addCategory(category);
             }
