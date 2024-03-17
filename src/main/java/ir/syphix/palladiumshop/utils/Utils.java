@@ -32,7 +32,7 @@ public class Utils {
     }
 
     public static Component toComponent(String content, TagResolver... placeholders) {
-        return miniMessage.deserialize(content, placeholders);
+        return Component.empty().decoration(TextDecoration.ITALIC, false).append(miniMessage.deserialize(content, placeholders));
     }
 
 }

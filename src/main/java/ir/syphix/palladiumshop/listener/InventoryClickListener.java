@@ -5,8 +5,7 @@ import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
-import ir.syrent.origin.paper.Origin;
-import org.bukkit.NamespacedKey;
+import ir.syphix.palladiumshop.gui.SellGui;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -78,7 +77,7 @@ public class InventoryClickListener implements Listener {
                 player.openInventory(gui.inventories.get(Integer.valueOf(page)));
 
             } else if (itemData.has(CustomGui.SHOP_SELL)) {
-                player.openInventory(CustomGuiManager.getCustomGuiById("sell_gui").inventory());
+                player.openInventory(new SellGui().inventory());
 
             } else if (itemData.has(ShopItem.SHOP_ITEM)) {
                 if (item == null) return;

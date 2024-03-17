@@ -4,14 +4,10 @@ categories:
   - "ores"
 
 shop:
-  itemsColor: "<gold>"
   color:
     items:
-      enabled: true
-      color: "<gold>"
-    customItems:
-      enabled: true
-      color: "<gold>"
+      vanilla: "<gold>"
+      custom: "<gold>"
   ingredients:
     - "B;LIGHT_BLUE_STAINED_GLASS_PANE"
     - "G;LIME_STAINED_GLASS_PANE"

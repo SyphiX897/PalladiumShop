@@ -29,4 +29,7 @@ public class ShopCategories {
             return categories.values().stream().toList();
         }
 
+        private ShopCategories() {
+        }
+
 }

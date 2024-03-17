@@ -1,0 +1,18 @@
+id: example
+title: "<red>Example"
+items:
+  # vanillaItem:
+  STONE: #item name in shop gui
+    material: WARPED_ROOTS #item material
+    price:
+      buy: -1
+      sell: 10
+
+  # customItem:
+  # supported plugins: Slimefun, WildTools, ItemAdder
+  # Steel_Ingot:
+  #   item: STEEL_INGOT
+  #   price:
+  #     buy: 1000
+  #     sell: -1
+

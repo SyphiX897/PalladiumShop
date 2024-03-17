@@ -2,6 +2,8 @@ package ir.syphix.palladiumshop;
 
 import ir.syphix.palladiumshop.annotation.AutoInitializerProcessor;
 import ir.syphix.palladiumshop.command.MainCommand;
+import ir.syphix.palladiumshop.core.gui.CustomGui;
+import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.item.CustomItems;
 import ir.syphix.palladiumshop.listener.InventoryClickListener;
@@ -47,6 +49,7 @@ public final class PalladiumShop extends OriginPlugin {
     public static void initialize() {
         new Messages();
         FileManager.addCategories();
+
         CustomItems.addItems();
         ShopCategories.registerCategories();
         AutoInitializerProcessor.process();

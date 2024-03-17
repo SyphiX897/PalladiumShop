@@ -4,6 +4,7 @@ import ir.syphix.palladiumshop.annotation.AutoInitializer;
 import ir.syphix.palladiumshop.core.gui.CustomGui;
 import ir.syrent.origin.paper.Origin;
 import org.bukkit.Material;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 @SuppressWarnings("unused")
@@ -17,6 +18,5 @@ public class SellGui extends CustomGui {
         glassShapeIngredient('G', new ItemStack(Material.LIME_STAINED_GLASS_PANE), " ");
         glassShape(Origin.getPlugin().getConfig().getStringList("shop.shape"));
         registerGui();
-
     }
 }

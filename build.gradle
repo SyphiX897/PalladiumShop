@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'xyz.jpenilla.run-paper' version '2.2.3'
 }
 
 group = 'ir.syphix'
@@ -24,7 +25,7 @@ repositories {
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT"
     implementation "org.reflections:reflections:0.10.2"
-    implementation "com.github.Syrent:Origin:1.5.12"
+    implementation "com.github.Syrent:Origin:1.5.15"
 
     compileOnly "com.github.MilkBowl:VaultAPI:1.7.1"
     compileOnly "com.github.Slimefun:Slimefun4:RC-37"
@@ -57,5 +58,14 @@ processResources {
     filteringCharset 'UTF-8'
     filesMatching('paper-plugin.yml') {
         expand props
+    }
+}
+
+tasks {
+    runServer {
+        // Configure the Minecraft version for our task.
+        // This is the only required configuration besides applying the plugin.
+        // Your plugin's jar (or shadowJar if present) will be used automatically.
+        minecraftVersion("1.20.4")
     }
 }

@@ -6,13 +6,13 @@ import ir.syphix.palladiumshop.message.Messages;
 import ir.syphix.palladiumshop.utils.Utils;
 import ir.syrent.origin.paper.Origin;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextDecoration;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -25,25 +25,26 @@ public class ShopItem {
     private final ItemStack itemStack;
     private final ShopPrice shopPrice;
     private final String displayName;
-    private final String shopItemsColor = Origin.getPlugin().getConfig().getString("shop.itemsColor");
-
+    private final boolean isEnchanting;
     public static NamespacedKey SHOP_ITEM = new NamespacedKey(Origin.getPlugin(), "shop_item");
     public static NamespacedKey SHOP_CUSTOM_ITEM = new NamespacedKey(Origin.getPlugin(), "shop_custom_item");
 
-    public ShopItem(String displayName, Material material, ShopPrice shopPrice) {
+    public ShopItem(String displayName, Material material, ShopPrice shopPrice, boolean isEnchanting) {
         this.displayName = displayName;
         this.shopPrice = shopPrice;
         this.originalItemStack = new ItemStack(material);
+        this.isEnchanting = isEnchanting;
 
         ItemStack dummyItemStack = new ItemStack(material);
         dummyItemStack.editMeta(itemMeta -> itemMeta.getPersistentDataContainer().set(SHOP_ITEM, PersistentDataType.STRING, ""));
         this.itemStack = dummyItemStack;
     }
 
-    public ShopItem(String displayName, String id, ItemStack itemStack, ShopPrice shopPrice) {
+    public ShopItem(String displayName, String id, ItemStack itemStack, ShopPrice shopPrice, boolean isEnchanting) {
         this.originalItemStack = itemStack.clone();
         this.displayName = displayName;
         this.shopPrice = shopPrice;
+        this.isEnchanting = isEnchanting;
 
         ItemStack dummyItemStack = itemStack.clone();
         dummyItemStack.editMeta(itemMeta -> {
@@ -61,6 +62,9 @@ public class ShopItem {
     }
 
     public void buy(Player player, int amount) {
+        if (shopPrice().buyPrice() == -1) {
+            return;
+        }
         double playerBalance = PalladiumShop.getEconomy().getBalance(player);
         double buyPrice = (shopPrice().buyPrice() * amount);
 
@@ -84,6 +88,9 @@ public class ShopItem {
     }
 
     public void buy(Player player, String id, int amount) {
+        if (shopPrice().buyPrice() == -1) {
+            return;
+        }
         double playerBalance = PalladiumShop.getEconomy().getBalance(player);
         double buyPrice = (shopPrice().buyPrice() * amount);
 
@@ -124,7 +131,12 @@ public class ShopItem {
 
     public ItemStack guiItemStack() {
         ItemStack dummyItemStack = itemStack.clone();
-        String displayName = (shopItemsColor + Utils.toFormattedName(displayName()));
+        String displayName;
+        if (itemStack.getItemMeta().getPersistentDataContainer().has(SHOP_ITEM)) {
+            displayName = Origin.getPlugin().getConfig().getString("shop.color.items.vanilla") + Utils.toFormattedName(displayName());
+        } else {
+            displayName = Origin.getPlugin().getConfig().getString("shop.color.items.custom") + Utils.toFormattedName(displayName());
+        }
         String customModelData;
         List<Component> itemStackLore = new ArrayList<>();
         if (dummyItemStack.getItemMeta().hasLore()) {
@@ -147,8 +159,8 @@ public class ShopItem {
         }
 
 
-        itemStackLore.add(toComponent("<gradient:dark_green:green>Buy: " + buy));
-        itemStackLore.add(toComponent("<gradient:dark_red:red>Sell: " + sell));
+        itemStackLore.add(Utils.toComponent("<gradient:dark_red:red>Buy: " + buy));
+        itemStackLore.add(Utils.toComponent("<gradient:dark_green:green>Sell: " + sell));
 
         if (itemStack.getItemMeta().hasCustomModelData()) {
             customModelData = String.valueOf(itemStack.getItemMeta().getCustomModelData());
@@ -157,20 +169,25 @@ public class ShopItem {
         }
 
         List<Component> finalItemStackLore = itemStackLore;
+
         dummyItemStack.editMeta(itemMeta -> {
-            itemMeta.displayName(toComponent(displayName));
+            itemMeta.displayName(Utils.toComponent(displayName));
             itemMeta.lore(finalItemStackLore);
             if (customModelData != null) {
                 itemMeta.setCustomModelData(Integer.valueOf(customModelData));
+            }
+            if (isEnchanting) {
+                itemMeta.addEnchant(Enchantment.MENDING, 1, true);
+                itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             }
         });
 
         return dummyItemStack;
     }
-
     public static ShopItem fromConfig(ConfigurationSection section) {
         ConfigurationSection priceSection = section.getConfigurationSection("price");
         if (priceSection == null) return null;
+
 
         if (section.getString("material") == null && section.getString("item") != null) {
             String item = section.getString("item");
@@ -180,21 +197,19 @@ public class ShopItem {
                     section.getName(),
                     item,
                     CustomItems.customItemList.get(item),
-                    ShopPrice.fromConfig(priceSection)
+                    ShopPrice.fromConfig(priceSection),
+                    section.getBoolean("enchanted", false)
             );
 
         } else if (section.getString("material") != null && section.getString("item") == null) {
             return new ShopItem(
                     section.getName(),
                     Material.valueOf(section.getString("material")),
-                    ShopPrice.fromConfig(priceSection)
+                    ShopPrice.fromConfig(priceSection),
+                    section.getBoolean("enchanted", false)
             );
         }
         return null;
-    }
-
-    private Component toComponent(String content) {
-        return MiniMessage.miniMessage().deserialize(content).decoration(TextDecoration.ITALIC, false);
     }
 
 }
