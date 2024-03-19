@@ -1,8 +1,9 @@
 package ir.syphix.palladiumshop.core.gui;
 
+import ir.syphix.palladiumshop.PalladiumShop;
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
-import ir.syphix.palladiumshop.utils.Utils;
+import ir.syphix.palladiumshop.utils.TextUtils;
 import ir.syrent.origin.paper.Origin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -51,10 +52,10 @@ public class CustomGui {
             this.page = page;
 
             for (int i = 0; i < (this.page + 1); i++) {
-                inventories.put((i + 1), Bukkit.createInventory(null, size, Utils.toComponent(title + " <dark_gray>(Page: " + (i + 1) + ")")));
+                inventories.put((i + 1), Bukkit.createInventory(null, size, TextUtils.toComponent(title + " <dark_gray>(Page: " + (i + 1) + "/" + (this.page + 1) + ")")));
             }
         } else {
-            inventories.put(1, Bukkit.createInventory(null, size, Utils.toComponent(title)));
+            inventories.put(1, Bukkit.createInventory(null, size, TextUtils.toComponent(title)));
         }
 
         inventory = inventories.get(1);
@@ -62,7 +63,7 @@ public class CustomGui {
 
     public void glassShapeIngredient(Character character, ItemStack itemStack, String displayName) {
         itemStack.editMeta(itemMeta -> {
-            itemMeta.displayName(Utils.toComponent(displayName));
+            itemMeta.displayName(TextUtils.toComponent(displayName));
             itemMeta.getPersistentDataContainer().set(SHOP_GLASS, PersistentDataType.STRING, "glass");
         });
         ingredient.put(character, itemStack);
@@ -120,7 +121,7 @@ public class CustomGui {
             if (inventories.size() != key) {
                 ItemStack nextPage = new ItemStack(Material.ARROW);
                 nextPage.editMeta(itemMeta -> {
-                    itemMeta.displayName(Utils.toComponent("<gradient:dark_green:green>Next Page"));
+                    itemMeta.displayName(TextUtils.toComponent("<gradient:dark_green:green>Next Page"));
                     itemMeta.getPersistentDataContainer().set(SHOP_PAGE, PersistentDataType.STRING, String.valueOf((key + 1)));
                 });
                 inventories.get(key).setItem(53, nextPage);
@@ -128,7 +129,7 @@ public class CustomGui {
             if (key > 1) {
                 ItemStack previousPage = new ItemStack(Material.ARROW);
                 previousPage.editMeta(itemMeta -> {
-                    itemMeta.displayName(Utils.toComponent("<gradient:gold:yellow>Previous Page"));
+                    itemMeta.displayName(TextUtils.toComponent("<gradient:gold:yellow>Previous Page"));
                     itemMeta.getPersistentDataContainer().set(SHOP_PAGE, PersistentDataType.STRING, String.valueOf((key - 1)));
                 });
                 inventories.get(key).setItem(45, previousPage);
@@ -153,7 +154,7 @@ public class CustomGui {
     private ItemStack sellGuiItemStack() {
         ItemStack sellItemStack = new ItemStack(Material.MINECART);
         sellItemStack.editMeta(itemMeta -> {
-            itemMeta.displayName(Utils.toComponent("<#00aeff>Sell Menu"));
+            itemMeta.displayName(TextUtils.toComponent("<#00aeff>Sell Menu"));
             itemMeta.addEnchant(Enchantment.MENDING, 1, false);
             itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             itemMeta.getPersistentDataContainer().set(SHOP_SELL, PersistentDataType.STRING, "sell_shop");

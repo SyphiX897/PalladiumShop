@@ -3,7 +3,7 @@ package ir.syphix.palladiumshop.core.shop;
 import ir.syphix.palladiumshop.PalladiumShop;
 import ir.syphix.palladiumshop.item.CustomItems;
 import ir.syphix.palladiumshop.message.Messages;
-import ir.syphix.palladiumshop.utils.Utils;
+import ir.syphix.palladiumshop.utils.TextUtils;
 import ir.syrent.origin.paper.Origin;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -70,19 +70,19 @@ public class ShopItem {
 
         if (playerBalance >= buyPrice) {
             if (player.getInventory().firstEmpty() == -1) {
-                player.sendMessage(Utils.toFormattedComponent(Messages.INVENTORY_IS_FULL));
+                player.sendMessage(TextUtils.toFormattedComponent(Messages.INVENTORY_IS_FULL));
             } else {
                 PalladiumShop.getEconomy().withdrawPlayer(player, buyPrice);
                 ItemStack dummyItemStack = new ItemStack(itemStack.getType());
                 dummyItemStack.setAmount(amount);
                 player.getInventory().addItem(dummyItemStack);
-                player.sendMessage(Utils.toFormattedComponent(Messages.BUY,
+                player.sendMessage(TextUtils.toFormattedComponent(Messages.BUY,
                         Placeholder.unparsed("item-amount", String.valueOf(amount)),
-                        Placeholder.unparsed("item-name", Utils.toFormattedName(displayName)),
+                        Placeholder.unparsed("item-name", TextUtils.toFormattedName(displayName)),
                         Placeholder.unparsed("total-price", String.valueOf(buyPrice))));
             }
         } else {
-            player.sendMessage(Utils.toFormattedComponent(Messages.NOT_ENOUGH_MONEY));
+            player.sendMessage(TextUtils.toFormattedComponent(Messages.NOT_ENOUGH_MONEY));
         }
 
     }
@@ -96,19 +96,19 @@ public class ShopItem {
 
         if (playerBalance >= buyPrice) {
             if (player.getInventory().firstEmpty() == -1) {
-                player.sendMessage(Utils.toFormattedComponent(Messages.INVENTORY_IS_FULL));
+                player.sendMessage(TextUtils.toFormattedComponent(Messages.INVENTORY_IS_FULL));
             } else {
                 PalladiumShop.getEconomy().withdrawPlayer(player, buyPrice);
                 ItemStack dummyItemStack = CustomItems.customItemList.get(id).clone();
                 dummyItemStack.setAmount(amount);
                 player.getInventory().addItem(dummyItemStack);
-                player.sendMessage(Utils.toFormattedComponent(Messages.BUY,
+                player.sendMessage(TextUtils.toFormattedComponent(Messages.BUY,
                         Placeholder.unparsed("item-amount", String.valueOf(amount)),
-                        Placeholder.unparsed("item-name", Utils.toFormattedName(displayName)),
+                        Placeholder.unparsed("item-name", TextUtils.toFormattedName(displayName)),
                         Placeholder.unparsed("total-price", String.valueOf(buyPrice))));
             }
         } else {
-            player.sendMessage(Utils.toFormattedComponent(Messages.NOT_ENOUGH_MONEY));
+            player.sendMessage(TextUtils.toFormattedComponent(Messages.NOT_ENOUGH_MONEY));
         }
 
     }
@@ -133,9 +133,9 @@ public class ShopItem {
         ItemStack dummyItemStack = itemStack.clone();
         String displayName;
         if (itemStack.getItemMeta().getPersistentDataContainer().has(SHOP_ITEM)) {
-            displayName = Origin.getPlugin().getConfig().getString("shop.color.items.vanilla") + Utils.toFormattedName(displayName());
+            displayName = Origin.getPlugin().getConfig().getString("shop.color.items.vanilla") + TextUtils.toFormattedName(displayName());
         } else {
-            displayName = Origin.getPlugin().getConfig().getString("shop.color.items.custom") + Utils.toFormattedName(displayName());
+            displayName = Origin.getPlugin().getConfig().getString("shop.color.items.custom") + TextUtils.toFormattedName(displayName());
         }
         String customModelData;
         List<Component> itemStackLore = new ArrayList<>();
@@ -159,8 +159,8 @@ public class ShopItem {
         }
 
 
-        itemStackLore.add(Utils.toComponent("<gradient:dark_red:red>Buy: " + buy));
-        itemStackLore.add(Utils.toComponent("<gradient:dark_green:green>Sell: " + sell));
+        itemStackLore.add(TextUtils.toComponent("<gradient:dark_red:red>Buy: " + buy));
+        itemStackLore.add(TextUtils.toComponent("<gradient:dark_green:green>Sell: " + sell));
 
         if (itemStack.getItemMeta().hasCustomModelData()) {
             customModelData = String.valueOf(itemStack.getItemMeta().getCustomModelData());
@@ -171,7 +171,7 @@ public class ShopItem {
         List<Component> finalItemStackLore = itemStackLore;
 
         dummyItemStack.editMeta(itemMeta -> {
-            itemMeta.displayName(Utils.toComponent(displayName));
+            itemMeta.displayName(TextUtils.toComponent(displayName));
             itemMeta.lore(finalItemStackLore);
             if (customModelData != null) {
                 itemMeta.setCustomModelData(Integer.valueOf(customModelData));

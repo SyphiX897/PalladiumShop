@@ -5,7 +5,6 @@ import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
-import ir.syphix.palladiumshop.gui.SellGui;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,8 +20,7 @@ public class InventoryClickListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         ItemStack clickedItem = event.getCurrentItem();
-
-        if (event.getInventory() == CustomGuiManager.getCustomGuiById("sell_gui").inventory()) {
+        if (event.getInventory() == CustomGuiManager.sellGuis.get(event.getWhoClicked().getUniqueId()).getInventory()) {
             if (clickedItem == null) return;
             if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_GLASS)) {
                 event.setCancelled(true);
@@ -30,7 +28,6 @@ public class InventoryClickListener implements Listener {
             }
             return;
         }
-
         boolean isShop = false;
         CustomGui gui = null;
 
@@ -77,40 +74,46 @@ public class InventoryClickListener implements Listener {
                 player.openInventory(gui.inventories.get(Integer.valueOf(page)));
 
             } else if (itemData.has(CustomGui.SHOP_SELL)) {
-                player.openInventory(new SellGui().inventory());
+                player.openInventory(CustomGuiManager.sellGuis.get(player.getUniqueId()).getInventory());
 
             } else if (itemData.has(ShopItem.SHOP_ITEM)) {
                 if (item == null) return;
                 ClickType clickType = event.getClick();
-                if (clickType.isLeftClick() && clickType.isShiftClick()) {
-                    item.buy(player, 32);
-                } else if (clickType.isRightClick() && clickType.isShiftClick()) {
-                    item.buy(player, 128);
-                } else if (clickType.isLeftClick()) {
-                    item.buy(player, 1);
-                } else if (clickType.isRightClick()) {
-                    item.buy(player, 64);
-                }
+                buyHandler(clickType, item, player);
 
             } else if (itemData.has(ShopItem.SHOP_CUSTOM_ITEM)) {
                 if (item == null) return;
                 String id = item.item().getItemMeta().getPersistentDataContainer().get(ShopItem.SHOP_CUSTOM_ITEM, PersistentDataType.STRING);
-
                 ClickType clickType = event.getClick();
-                if (clickType.isLeftClick() && clickType.isShiftClick()) {
-                    item.buy(player, id, 32);
-                } else if (clickType.isRightClick() && clickType.isShiftClick()) {
-                    item.buy(player, id, 128);
-                } else if (clickType.isLeftClick()) {
-                    item.buy(player, id, 1);
-                } else if (clickType.isRightClick()) {
-                    item.buy(player, id, 64);
-                }
-
+                sellHandler(clickType, item, player, id);
             }
 
         }
 
+    }
+
+    public void buyHandler(ClickType clickType, ShopItem shopItem, Player player) {
+        if (clickType.isLeftClick() && clickType.isShiftClick()) {
+            shopItem.buy(player, 32);
+        } else if (clickType.isRightClick() && clickType.isShiftClick()) {
+            shopItem.buy(player, 128);
+        } else if (clickType.isLeftClick()) {
+            shopItem.buy(player, 1);
+        } else if (clickType.isRightClick()) {
+            shopItem.buy(player, 64);
+        }
+    }
+
+    public void sellHandler(ClickType clickType, ShopItem shopItem, Player player, String id) {
+        if (clickType.isLeftClick() && clickType.isShiftClick()) {
+            shopItem.buy(player, id, 32);
+        } else if (clickType.isRightClick() && clickType.isShiftClick()) {
+            shopItem.buy(player, id, 128);
+        } else if (clickType.isLeftClick()) {
+            shopItem.buy(player, id, 1);
+        } else if (clickType.isRightClick()) {
+            shopItem.buy(player, id, 64);
+        }
     }
 
 }

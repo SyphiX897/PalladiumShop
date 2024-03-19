@@ -9,7 +9,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class Utils {
+public class TextUtils {
 
     static MiniMessage miniMessage = MiniMessage.builder()
             .tags(

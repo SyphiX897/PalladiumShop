@@ -43,7 +43,7 @@ public class FileManager {
                 YamlConfig itemsConfig = new YamlConfig(rootDirectory, toYamlName(fileName), false);
                 FileConfiguration config = itemsConfig.getConfig();
                 config.set("id", fileName);
-                config.set("title", "<#00aeff>" + Utils.toFormattedName(fileName));
+                config.set("title", "<#00aeff>" + TextUtils.toFormattedName(fileName));
                 itemsConfig.saveConfig();
                 categoryFiles.put(fileName, config);
             }
