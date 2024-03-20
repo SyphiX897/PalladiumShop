@@ -1,0 +1,144 @@
+id: "ores"
+title: "<#00aeff>Ores"
+items:
+  NETHERITE_INGOT:
+    material: NETHERITE_INGOT
+    price:
+      buy: 50000
+      sell: 250
+  DIAMOND:
+    material: DIAMOND
+    price:
+      buy: 1000
+      sell: 200
+  EMERALD:
+    material: EMERALD
+    price:
+      buy: 900
+      sell: 50
+  GOLD_INGOT:
+    material: GOLD_INGOT
+    price:
+      buy: 750
+      sell: 85
+  IRON_INGOT:
+    material: IRON_INGOT
+    price:
+      buy: 750
+      sell: 45
+  COPPER_INGOT:
+    material: COPPER_INGOT
+    price:
+      buy: 650
+      sell: 35
+  LAPIS_LAZULI:
+    material: LAPIS_LAZULI
+    price:
+      buy: 300
+      sell: 20
+  REDSTONE:
+    material: REDSTONE
+    price:
+      buy: 300
+      sell: 22.5
+  COAL:
+    material: COAL
+    price:
+      buy: 100
+      sell: 30
+  QUARTZ:
+    material: QUARTZ
+    price:
+      buy: 150
+      sell: 25
+  ANCIENT_DEBRIS:
+    material: ANCIENT_DEBRIS
+    price:
+      buy: 12500
+      sell: 300
+  DIAMOND_ORE:
+    material: DIAMOND_ORE
+    price:
+      buy: 2000
+      sell: 250
+  EMERALD_ORE:
+    material: EMERALD_ORE
+    price:
+      buy: 1800
+      sell: 250
+  GOLD_ORE:
+    material: GOLD_ORE
+    price:
+      buy: 1500
+      sell: 150
+  IRON_ORE:
+    material: IRON_ORE
+    price:
+      buy: 1500
+      sell: 150
+  COPPER_ORE:
+    material: COPPER_ORE
+    price:
+      buy: 1300
+      sell: 80
+  LAPIS_ORE:
+    material: LAPIS_ORE
+    price:
+      buy: 600
+      sell: 100
+  REDSTONE_ORE:
+    material: REDSTONE_ORE
+    price:
+      buy: 600
+      sell: 110
+  COAL_ORE:
+    material: COAL_ORE
+    price:
+      buy: 250
+      sell: 80
+  NETHER_QUARTZ_ORE:
+    material: NETHER_QUARTZ_ORE
+    price:
+      buy: 300
+      sell: 75
+  DEEPSLATE_DIAMOND_ORE:
+    material: DEEPSLATE_DIAMOND_ORE
+    price:
+      buy: 3000
+      sell: 500
+  DEEPSLATE_EMERALD_ORE:
+    material: DEEPSLATE_EMERALD_ORE
+    price:
+      buy: 2700
+      sell: 500
+  DEEPSLATE_GOLD_ORE:
+    material: DEEPSLATE_GOLD_ORE
+    price:
+      buy: 2250
+      sell: 300
+  DEEPSLATE_IRON_ORE:
+    material: DEEPSLATE_IRON_ORE
+    price:
+      buy: 2250
+      sell: 300
+  DEEPSLATE_COPPER_ORE:
+    material: DEEPSLATE_COPPER_ORE
+    price:
+      buy: 1950
+      sell: 200
+  DEEPSLATE_LAPIS_ORE:
+    material: DEEPSLATE_LAPIS_ORE
+    price:
+      buy: 900
+      sell: 300
+  DEEPSLATE_REDSTONE_ORE:
+    material: DEEPSLATE_REDSTONE_ORE
+    price:
+      buy: 900
+      sell: 300
+  DEEPSLATE_COAL_ORE:
+    material: DEEPSLATE_COAL_ORE
+    price:
+      buy: 500
+      sell: 200
+

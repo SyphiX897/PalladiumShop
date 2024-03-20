@@ -1,0 +1,258 @@
+id: food_farm
+title: "<#00aeff>Food and Farm"
+items:
+  PORKCHOP:
+    material: PORKCHOP
+    price:
+      buy: 100
+      sell: 7
+  COOKED_PORKCHOP:
+    material: COOKED_PORKCHOP
+    price:
+      buy: 100
+      sell: 6
+  BEEF:
+    material: BEEF
+    price:
+      buy: 120
+      sell: 10
+  COOKED_BEEF:
+    material: COOKED_BEEF
+    price:
+      buy: 200
+      sell: 20
+  MUTTON:
+    material: MUTTON
+    price:
+      buy: 175
+      sell: 18
+  COOKED_MUTTON:
+    material: COOKED_MUTTON
+    price:
+      buy: 200
+      sell: 22.5
+  RABBIT:
+    material: RABBIT
+    price:
+      buy: 275
+      sell: 25
+  COOKED_RABBIT:
+    material: COOKED_RABBIT
+    price:
+      buy: 350
+      sell: 30
+  CHICKEN:
+    material: CHICKEN
+    price:
+      buy: 1000
+      sell: 100
+  COOKED_CHICKEN:
+    material: COOKED_CHICKEN
+    price:
+      buy: 120
+      sell: 8
+  COD:
+    material: COD
+    price:
+      buy: 200
+      sell: 25
+  COOKED_COD:
+    material: COOKED_COD
+    price:
+      buy: 10000
+      sell: 550
+  SALMON:
+    material: SALMON
+    price:
+      buy: 2500
+      sell: 120
+  COOKED_SALMON:
+    material: COOKED_SALMON
+    price:
+      buy: 25000
+      sell: 500
+  TROPICAL_FISH:
+    material: TROPICAL_FISH
+    price:
+      buy: 15000
+      sell: 450
+  PUFFERFISH:
+    material: PUFFERFISH
+    price:
+      buy: 40000
+      sell: 250
+  MUSHROOM_STEW:
+    material: MUSHROOM_STEW
+    price:
+      buy: 185
+      sell: 50
+  RABBIT_STEW:
+    material: RABBIT_STEW
+    price:
+      buy: 385
+      sell: 65
+  BEETROOT_SOUP:
+    material: BEETROOT_SOUP
+    price:
+      buy: 275
+      sell: 18
+  APPLE:
+    material: APPLE
+    price:
+      buy: 1000
+      sell: 100
+  GOLDEN_APPLE:
+    material: GOLDEN_APPLE
+    price:
+      buy: 85
+      sell: 20
+  COOKIE:
+    material: COOKIE
+    price:
+      buy: 120
+      sell: 10
+  PUMPKIN_PIE:
+    material: PUMPKIN_PIE
+    price:
+      buy: 100
+      sell: 7
+  CAKE:
+    material: CAKE
+    price:
+      buy: 100
+      sell: 7
+  HONEY_BOTTLE:
+    material: HONEY_BOTTLE
+    price:
+      buy: 100
+      sell: 6
+  GLOW_BERRIES:
+    material: GLOW_BERRIES
+    price:
+      buy: 120
+      sell: 10
+  CARROT:
+    material: CARROT
+    price:
+      buy: 200
+      sell: 20
+  GOLDEN_CARROT:
+    material: GOLDEN_CARROT
+    price:
+      buy: 175
+      sell: 18
+  POTATO:
+    material: POTATO
+    price:
+      buy: 200
+      sell: 22.5
+  BAKED_POTATO:
+    material: BAKED_POTATO
+    price:
+      buy: 275
+      sell: 25
+  WHEAT_SEEDS:
+    material: WHEAT_SEEDS
+    price:
+      buy: 350
+      sell: 30
+  PUMPKIN_SEEDS:
+    material: PUMPKIN_SEEDS
+    price:
+      buy: 1000
+      sell: 100
+  MELON_SEEDS:
+    material: MELON_SEEDS
+    price:
+      buy: 120
+      sell: 8
+  BEETROOT_SEEDS:
+    material: BEETROOT_SEEDS
+    price:
+      buy: 200
+      sell: 25
+  COCOA_BEANS:
+    material: COCOA_BEANS
+    price:
+      buy: 10000
+      sell: 550
+  WHEAT:
+    material: WHEAT
+    price:
+      buy: 2500
+      sell: 120
+  PUMPKIN:
+    material: PUMPKIN
+    price:
+      buy: 25000
+      sell: 500
+  MELON:
+    material: MELON
+    price:
+      buy: 15000
+      sell: 450
+  BEETROOT:
+    material: BEETROOT
+    price:
+      buy: 40000
+      sell: 250
+  SUGAR_CANE:
+    material: SUGAR_CANE
+    price:
+      buy: 185
+      sell: 50
+  SWEET_BERRIES:
+    material: SWEET_BERRIES
+    price:
+      buy: 385
+      sell: 65
+  CACTUS:
+    material: CACTUS
+    price:
+      buy: 275
+      sell: 18
+  BAMBOO:
+    material: BAMBOO
+    price:
+      buy: 1000
+      sell: 100
+  KELP:
+    material: KELP
+    price:
+      buy: 85
+      sell: 20
+  SEA_PICKLE:
+    material: SEA_PICKLE
+    price:
+      buy: 120
+      sell: 10
+  HONEYCOMB:
+    material: HONEYCOMB
+    price:
+      buy: 100
+      sell: 7
+  NETHER_WART:
+    material: NETHER_WART
+    price:
+      buy: 100
+      sell: 7
+  WEEPING_VINES:
+    material: WEEPING_VINES
+    price:
+      buy: 100
+      sell: 7
+  TWISTING_VINES:
+    material: TWISTING_VINES
+    price:
+      buy: 100
+      sell: 7
+  CHORUS_FRUIT:
+    material: CHORUS_FRUIT
+    price:
+      buy: 100
+      sell: 7
+  CHORUS_FLOWER:
+    material: CHORUS_FLOWER
+    price:
+      buy: 100
+      sell: 7

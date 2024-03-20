@@ -24,5 +24,6 @@ public class ShopCommand extends OriginCommand {
                     Inventory mainGui = new MainGui().inventory();
                     player.openInventory(mainGui);
                 });
+        getManager().command(shop);
     }
 }
