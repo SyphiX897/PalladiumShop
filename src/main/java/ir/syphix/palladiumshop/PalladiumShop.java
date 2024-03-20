@@ -17,6 +17,9 @@ import ir.syrent.origin.paper.OriginPlugin;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
+import java.util.Collections;
+import java.util.List;
+
 public final class PalladiumShop extends OriginPlugin {
 
     private static Economy econ = null;
@@ -55,6 +58,11 @@ public final class PalladiumShop extends OriginPlugin {
         CustomItems.addItems();
         ShopCategories.registerCategories();
         AutoInitializerProcessor.process();
+    }
+
+    public static String version() {
+        String[] version = getInstance().getServer().getMinecraftVersion().split("\\.");
+        return (version[0] + "." + version[1]);
     }
 
 }

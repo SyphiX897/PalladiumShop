@@ -49,10 +49,10 @@ public class CustomGui {
             } else {
                 page = itemAmount / freeSpace;
             }
-            this.page = page;
+            this.page = (page + 1);
 
-            for (int i = 0; i < (this.page + 1); i++) {
-                inventories.put((i + 1), Bukkit.createInventory(null, size, TextUtils.toComponent(title + " <dark_gray>(Page: " + (i + 1) + "/" + (this.page + 1) + ")")));
+            for (int i = 0; i < this.page; i++) {
+                inventories.put((i + 1), Bukkit.createInventory(null, size, TextUtils.toComponent(title + " <dark_gray>(Page: " + (i + 1) + "/" + this.page + ")")));
             }
         } else {
             inventories.put(1, Bukkit.createInventory(null, size, TextUtils.toComponent(title)));

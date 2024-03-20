@@ -31,6 +31,66 @@ items:
     price:
       buy: 100
       sell: 5
+  PACKED_MUD:
+    material: PACKED_MUD
+    price:
+      buy: 150
+      sell: 10
+  OAK_LOG:
+    material: OAK_LOG
+    price:
+      buy: 50
+      sell: 5
+  SPRUCE_LOG:
+    material: SPRUCE_LOG
+    price:
+      buy: 50
+      sell: 5
+  BIRCH_LOG:
+    material: BIRCH_LOG
+    price:
+      buy: 50
+      sell: 5
+  JUNGLE_LOG:
+    material: JUNGLE_LOG
+    price:
+      buy: 50
+      sell: 5
+  ACACIA_LOG:
+    material: ACACIA_LOG
+    price:
+      buy: 50
+      sell: 5
+  DARK_OAK_LOG:
+    material: DARK_OAK_LOG
+    price:
+      buy: 50
+      sell: 5
+  MANGROVE_LOG:
+    material: MANGROVE_LOG
+    price:
+      buy: 50
+      sell: 5
+  CHERRY_LOG:
+    material: CHERRY_LOG
+    price:
+      buy: 50
+      sell: 5
+  BROWN_MUSHROOM_BLOCK:
+    material: BROWN_MUSHROOM_BLOCK
+    price:
+      buy: 100
+      sell: 10
+  RED_MUSHROOM_BLOCK:
+    material: RED_MUSHROOM_BLOCK
+    price:
+      buy: 100
+      sell: 10
+  BAMBOO_BLOCK:
+    material: BAMBOO_BLOCK
+    price:
+      buy: 90
+      sell: 10
   CLAY:
     material: CLAY
     price:
@@ -76,6 +136,11 @@ items:
     price:
       buy: 100
       sell: 10
+  SMOOTH_STONE:
+    material: SMOOTH_STONE
+    price:
+      buy: 25
+      sell: 2
   STONE:
     material: STONE
     price:
@@ -86,6 +151,11 @@ items:
     price:
       buy: 10
       sell: 0.5
+  MOSSY_COBBLESTONE:
+    material: MOSSY_COBBLESTONE
+    price:
+      buy: 50
+      sell: 2
   DEEPSLATE:
     material: DEEPSLATE
     price:
@@ -131,11 +201,61 @@ items:
     price:
       buy: 100
       sell: 10
+  AMETHYST_BLOCK:
+    material: AMETHYST_BLOCK
+    price:
+      buy: 450
+      sell: 30
+  GLASS:
+    material: GLASS
+    price:
+      buy: 15
+      sell: 1
   PRISMARINE:
     material: PRISMARINE
     price:
       buy: 400
       sell: 25
+  PRISMARINE_BRICKS:
+    material: PRISMARINE_BRICKS
+    price:
+      buy: 400
+      sell: 25
+  DARK_PRISMARINE:
+    material: DARK_PRISMARINE
+    price:
+      buy: 400
+      sell: 25
+  SPONGE:
+    material: SPONGE
+    price:
+      buy: 5000
+      sell: 250
+  SEA_LANTERN:
+    material: SEA_LANTERN
+    price:
+      buy: 250
+      sell: 10
+  OCHRE_FROGLIGHT:
+    material: OCHRE_FROGLIGHT
+    price:
+      buy: 250
+      sell: 10
+  VERDANT_FROGLIGHT:
+    material: VERDANT_FROGLIGHT
+    price:
+      buy: 250
+      sell: 10
+  PEARLESCENT_FROGLIGHT:
+    material: PEARLESCENT_FROGLIGHT
+    price:
+      buy: 250
+      sell: 10
+  GLOWSTONE:
+    material: GLOWSTONE
+    price:
+      buy: 125
+      sell: 5
   OBSIDIAN:
     material: OBSIDIAN
     price:
@@ -149,8 +269,8 @@ items:
   MAGMA_BLOCK:
     material: MAGMA_BLOCK
     price:
-      buy: 0
-      sell: 0
+      buy: 45
+      sell: 5
   NETHERRACK:
     material: NETHERRACK
     price:
@@ -161,11 +281,21 @@ items:
     price:
       buy: 45
       sell: 5
+  NETHER_WART_BLOCK:
+    material: NETHER_WART_BLOCK
+    price:
+      buy: 75
+      sell: 10
   WARPED_NYLIUM:
     material: WARPED_NYLIUM
     price:
       buy: 45
       sell: 5
+  WARPED_WART_BLOCK:
+    material: WARPED_WART_BLOCK
+    price:
+      buy: 75
+      sell: 10
   SOUL_SAND:
     material: SOUL_SAND
     price:
@@ -173,6 +303,21 @@ items:
       sell: 5
   SOUL_SOIL:
     material: SOUL_SOIL
+    price:
+      buy: 45
+      sell: 5
+  NETHER_BRICKS:
+    material: NETHER_BRICKS
+    price:
+      buy: 80
+      sell: 7.5
+  BLACKSTONE:
+    material: BLACKSTONE
+    price:
+      buy: 45
+      sell: 5
+  BASALT:
+    material: BASALT
     price:
       buy: 45
       sell: 5

@@ -2,6 +2,8 @@
 categories:
   - "mobs"
   - "ores"
+  - "blocks"
+  - "food_farm"
 
 shop:
   color:

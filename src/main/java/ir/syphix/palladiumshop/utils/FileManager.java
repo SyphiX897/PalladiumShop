@@ -27,11 +27,12 @@ public class FileManager {
         }
 
         for (String fileName : filesList) {
-            if (Arrays.stream((rootDirectory.listFiles())).map(File::getName).toList().contains(toYamlName(fileName)) ||
-                    Origin.getPlugin().getClass().getClassLoader().getResource("categories/" + toYamlName(fileName)) != null) {
-                YamlConfig itemsConfig = new YamlConfig(Origin.getPlugin().getDataFolder(), "categories/" + toYamlName(fileName));
+            String existingFile = fileName + "-" + PalladiumShop.version();
+            if (Arrays.stream((rootDirectory.listFiles())).map(File::getName).toList().contains(toYamlName(existingFile)) ||
+                    Origin.getPlugin().getClass().getClassLoader().getResource("categories/" + toYamlName(existingFile)) != null) {
+                YamlConfig itemsConfig = new YamlConfig(Origin.getPlugin().getDataFolder(), "categories/" + toYamlName(existingFile));
                 FileConfiguration config = itemsConfig.getConfig();
-                categoryFiles.put(fileName, config);
+                categoryFiles.put(existingFile, config);
             } else {
                 try {
                     YamlConfiguration configuration = YamlConfiguration.loadConfiguration(new InputStreamReader(Origin.getPlugin().getResource("example.yml")));
