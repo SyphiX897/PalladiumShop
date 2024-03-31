@@ -25,14 +25,14 @@ public class MainCommand extends OriginCommand {
 
         Command.Builder<SenderExtension> menu = getBuilder()
                 .literal("menu")
-                .required("menu", StringParser.stringParser(), SuggestionProvider.suggestingStrings(CustomGuiManager.getGuis().stream().map(CustomGui::id).filter(content -> content != "sell_gui").toList()))
+                .required("menu", StringParser.stringParser(), SuggestionProvider.suggestingStrings(CustomGuiManager.guis().stream().map(CustomGui::id).filter(content -> content != "sell_gui").toList()))
                 .optional("player", PlayerParser.playerParser())
                 .permission("opengui")
                 .handler(context -> {
                     Player player = context.sender().player();
                     if (player == null) return;
                     Player targetPlayer = context.<Player>optional("player").orElse(player);
-                    CustomGui gui = CustomGuiManager.getCustomGuiById(context.get("menu"));
+                    CustomGui gui = CustomGuiManager.guiById(context.get("menu"));
                     if (gui == null) {
                         player.sendMessage(TextUtils.toFormattedComponent(Messages.MENU_NOT_FOUND));
                         return;

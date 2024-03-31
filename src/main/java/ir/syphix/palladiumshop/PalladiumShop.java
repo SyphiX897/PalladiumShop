@@ -60,9 +60,5 @@ public final class PalladiumShop extends OriginPlugin {
         AutoInitializerProcessor.process();
     }
 
-    public static String version() {
-        String[] version = getInstance().getServer().getMinecraftVersion().split("\\.");
-        return (version[0] + "." + version[1]);
-    }
 
 }

@@ -20,7 +20,7 @@ public class InventoryClickListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         ItemStack clickedItem = event.getCurrentItem();
-        if (event.getInventory() == CustomGuiManager.sellGuis.get(event.getWhoClicked().getUniqueId()).getInventory()) {
+        if (event.getInventory() == CustomGuiManager.sellGuiByUuid(event.getWhoClicked().getUniqueId()).getInventory()) {
             if (clickedItem == null) return;
             if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_GLASS)) {
                 event.setCancelled(true);
@@ -31,7 +31,7 @@ public class InventoryClickListener implements Listener {
         boolean isShop = false;
         CustomGui gui = null;
 
-        for (CustomGui customGui : CustomGuiManager.getGuis()) {
+        for (CustomGui customGui : CustomGuiManager.guis()) {
             for (Inventory inventory : customGui.inventories.values()) {
                 if (event.getWhoClicked().getOpenInventory().getTopInventory() == inventory) {
                     isShop = true;
@@ -74,7 +74,7 @@ public class InventoryClickListener implements Listener {
                 player.openInventory(gui.inventories.get(Integer.valueOf(page)));
 
             } else if (itemData.has(CustomGui.SHOP_SELL)) {
-                player.openInventory(CustomGuiManager.sellGuis.get(player.getUniqueId()).getInventory());
+                player.openInventory(CustomGuiManager.sellGuiByUuid(player.getUniqueId()).getInventory());
 
             } else if (itemData.has(ShopItem.SHOP_ITEM)) {
                 if (item == null) return;

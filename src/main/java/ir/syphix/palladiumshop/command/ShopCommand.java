@@ -1,6 +1,7 @@
 package ir.syphix.palladiumshop.command;
 
 import ir.syphix.palladiumshop.annotation.AutoInitializer;
+import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.gui.MainGui;
 import ir.syrent.origin.paper.command.OriginCommand;
 import ir.syrent.origin.paper.command.interfaces.SenderExtension;
@@ -21,8 +22,7 @@ public class ShopCommand extends OriginCommand {
                 .handler(context -> {
                     Player player = context.sender().player();
                     if (player == null) return;
-                    Inventory mainGui = new MainGui().inventory();
-                    player.openInventory(mainGui);
+                    player.openInventory(CustomGuiManager.mainGuiByUuid(player.getUniqueId()).getInventory());
                 });
         getManager().command(shop);
     }

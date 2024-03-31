@@ -1,5 +1,6 @@
 package ir.syphix.palladiumshop.annotation;
 
+import org.bukkit.Material;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Constructor;

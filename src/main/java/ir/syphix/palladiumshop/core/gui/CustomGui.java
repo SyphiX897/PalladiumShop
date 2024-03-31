@@ -1,6 +1,5 @@
 package ir.syphix.palladiumshop.core.gui;
 
-import ir.syphix.palladiumshop.PalladiumShop;
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
 import ir.syphix.palladiumshop.utils.TextUtils;
@@ -148,7 +147,7 @@ public class CustomGui {
     }
 
     public void registerGui() {
-        CustomGuiManager.guis.put(id, this);
+        CustomGuiManager.guiHashMap().put(id, this);
     }
 
     private ItemStack sellGuiItemStack() {

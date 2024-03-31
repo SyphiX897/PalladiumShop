@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ShopItem {
@@ -99,7 +100,7 @@ public class ShopItem {
                 player.sendMessage(TextUtils.toFormattedComponent(Messages.INVENTORY_IS_FULL));
             } else {
                 PalladiumShop.getEconomy().withdrawPlayer(player, buyPrice);
-                ItemStack dummyItemStack = CustomItems.customItemList.get(id).clone();
+                ItemStack dummyItemStack = CustomItems.itemById(id).clone();
                 dummyItemStack.setAmount(amount);
                 player.getInventory().addItem(dummyItemStack);
                 player.sendMessage(TextUtils.toFormattedComponent(Messages.BUY,
@@ -184,24 +185,33 @@ public class ShopItem {
 
         return dummyItemStack;
     }
-    public static ShopItem fromConfig(ConfigurationSection section) {
+    public static ShopItem fromConfig(String id, ConfigurationSection section) {
+
         ConfigurationSection priceSection = section.getConfigurationSection("price");
         if (priceSection == null) return null;
 
 
         if (section.getString("material") == null && section.getString("item") != null) {
-            String item = section.getString("item");
-            if (item == null) return null;
+            String itemId = section.getString("item");
+            if (!CustomItems.keys().contains(itemId)) {
+                Origin.warn("Can not find item by id \"" + itemId + "\" in " + id + " config file, this item id is wrong or is not supported.");
+                return null;
+            }
 
             return new ShopItem(
                     section.getName(),
-                    item,
-                    CustomItems.customItemList.get(item),
+                    itemId,
+                    CustomItems.itemById(itemId),
                     ShopPrice.fromConfig(priceSection),
                     section.getBoolean("enchanted", false)
             );
 
         } else if (section.getString("material") != null && section.getString("item") == null) {
+            if (!Arrays.stream(Material.values()).map(Material::name).toList().contains(section.getString("material"))) {
+                Origin.warn("Can not find " + section.getString("material") + " in " + id + " config file, this material does not exist in this version or it is a misspell.");
+                return null;
+            }
+
             return new ShopItem(
                     section.getName(),
                     Material.valueOf(section.getString("material")),

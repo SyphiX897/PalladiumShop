@@ -20,7 +20,8 @@ public class InventoryCloseListener implements Listener {
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
-        SellGui sellGui = CustomGuiManager.sellGuis.get(event.getPlayer().getUniqueId());
+        SellGui sellGui = CustomGuiManager.sellGuiHashMap().get(event.getPlayer().getUniqueId());
+        if (sellGui == null) return;
         if (event.getInventory() == sellGui.getInventory()) {
             if (!(event.getPlayer() instanceof Player player)) return;
             Inventory inventory = event.getInventory();

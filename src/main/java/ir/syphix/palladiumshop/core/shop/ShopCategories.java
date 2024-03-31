@@ -21,10 +21,6 @@ public class ShopCategories {
         categories.put(category.id(), category);
     }
 
-    public static ShopCategory getCategory(String id) {
-        return categories.get(id);
-    }
-
     public static List<ShopCategory> getCategories() {
         return categories.values().stream().toList();
     }

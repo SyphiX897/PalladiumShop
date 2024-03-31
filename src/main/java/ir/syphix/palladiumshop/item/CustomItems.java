@@ -10,13 +10,15 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import ir.syphix.palladiumitems.Core.CustomItem;
 import ir.syphix.palladiumitems.Core.CustomItemManager;
 import ir.syrent.origin.paper.Origin;
+import it.unimi.dsi.fastutil.Hash;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class CustomItems {
 
-    public static HashMap<String, ItemStack> customItemList = new HashMap<>();
+    private static final HashMap<String, ItemStack> customItemList = new HashMap<>();
 
     public static void addItems() {
         if (Origin.hasPlugin("PalladiumItems")) {
@@ -43,6 +45,16 @@ public class CustomItems {
                 customItemList.put(customStack.getId(), customStack.getItemStack());
             }
         }
+    }
+
+    public static List<ItemStack> items() {
+        return customItemList.values().stream().toList();
+    }
+    public static ItemStack itemById(String id) {
+        return customItemList.get(id);
+    }
+    public static List<String> keys() {
+        return customItemList.keySet().stream().toList();
     }
 
 }

@@ -10,6 +10,7 @@ public class PlayerQuitListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        CustomGuiManager.sellGuis.remove(event.getPlayer().getUniqueId());
+        CustomGuiManager.sellGuiHashMap().remove(event.getPlayer().getUniqueId());
+        CustomGuiManager.mainGuiHashMap().remove(event.getPlayer().getUniqueId());
     }
 }

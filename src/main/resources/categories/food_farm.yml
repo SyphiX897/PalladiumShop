@@ -4,118 +4,118 @@ items:
   PORKCHOP:
     material: PORKCHOP
     price:
-      buy: 100
-      sell: 7
+      buy: 15
+      sell: 4
   COOKED_PORKCHOP:
     material: COOKED_PORKCHOP
     price:
-      buy: 100
-      sell: 6
+      buy: 20
+      sell: 5
   BEEF:
     material: BEEF
     price:
-      buy: 120
-      sell: 10
+      buy: 15
+      sell: 4
   COOKED_BEEF:
     material: COOKED_BEEF
     price:
-      buy: 200
-      sell: 20
+      buy: 20
+      sell: 5
   MUTTON:
     material: MUTTON
     price:
-      buy: 175
-      sell: 18
+      buy: 10
+      sell: 3.5
   COOKED_MUTTON:
     material: COOKED_MUTTON
     price:
-      buy: 200
-      sell: 22.5
+      buy: 12.5
+      sell: 4
   RABBIT:
     material: RABBIT
     price:
-      buy: 275
-      sell: 25
+      buy: 9
+      sell: 3
   COOKED_RABBIT:
     material: COOKED_RABBIT
     price:
-      buy: 350
-      sell: 30
+      buy: 11.5
+      sell: 3.5
   CHICKEN:
     material: CHICKEN
     price:
-      buy: 1000
-      sell: 100
+      buy: 9
+      sell: 3
   COOKED_CHICKEN:
     material: COOKED_CHICKEN
     price:
-      buy: 120
-      sell: 8
+      buy: 11.5
+      sell: 3.5
   COD:
     material: COD
     price:
-      buy: 200
-      sell: 25
+      buy: 9
+      sell: 3
   COOKED_COD:
     material: COOKED_COD
     price:
-      buy: 10000
-      sell: 550
+      buy: 11
+      sell: 3.5
   SALMON:
     material: SALMON
     price:
-      buy: 2500
-      sell: 120
+      buy: 9
+      sell: 3
   COOKED_SALMON:
     material: COOKED_SALMON
     price:
-      buy: 25000
-      sell: 500
+      buy: 11
+      sell: 3.5
   TROPICAL_FISH:
     material: TROPICAL_FISH
     price:
-      buy: 15000
-      sell: 450
+      buy: 100
+      sell: 25
   PUFFERFISH:
     material: PUFFERFISH
     price:
-      buy: 40000
-      sell: 250
+      buy: 100
+      sell: 25
   MUSHROOM_STEW:
     material: MUSHROOM_STEW
     price:
-      buy: 185
-      sell: 50
+      buy: 300
+      sell: 40
   RABBIT_STEW:
     material: RABBIT_STEW
     price:
-      buy: 385
-      sell: 65
+      buy: 300
+      sell: 40
   BEETROOT_SOUP:
     material: BEETROOT_SOUP
     price:
-      buy: 275
-      sell: 18
+      buy: 300
+      sell: 40
   APPLE:
     material: APPLE
     price:
-      buy: 1000
-      sell: 100
+      buy: 550
+      sell: 50
   GOLDEN_APPLE:
     material: GOLDEN_APPLE
     price:
-      buy: 85
-      sell: 20
+      buy: 2550
+      sell: 250
   COOKIE:
     material: COOKIE
     price:
-      buy: 120
-      sell: 10
+      buy: 7.5
+      sell: 2.5
   PUMPKIN_PIE:
     material: PUMPKIN_PIE
     price:
-      buy: 100
-      sell: 7
+      buy: 10
+      sell: 5
   CAKE:
     material: CAKE
     price:
@@ -125,134 +125,134 @@ items:
     material: HONEY_BOTTLE
     price:
       buy: 100
-      sell: 6
+      sell: 25
   GLOW_BERRIES:
     material: GLOW_BERRIES
     price:
-      buy: 120
+      buy: 45
       sell: 10
   CARROT:
     material: CARROT
     price:
-      buy: 200
-      sell: 20
+      buy: 7
+      sell: 15
   GOLDEN_CARROT:
     material: GOLDEN_CARROT
     price:
-      buy: 175
-      sell: 18
+      buy: 307
+      sell: 40
   POTATO:
     material: POTATO
     price:
-      buy: 200
-      sell: 22.5
+      buy: 7
+      sell: 15
   BAKED_POTATO:
     material: BAKED_POTATO
     price:
-      buy: 275
-      sell: 25
+      buy: 10
+      sell: 20
   WHEAT_SEEDS:
     material: WHEAT_SEEDS
     price:
-      buy: 350
-      sell: 30
+      buy: 3
+      sell: 2.5
   PUMPKIN_SEEDS:
     material: PUMPKIN_SEEDS
     price:
-      buy: 1000
-      sell: 100
+      buy: 3
+      sell: 2.5
   MELON_SEEDS:
     material: MELON_SEEDS
     price:
-      buy: 120
-      sell: 8
+      buy: 3
+      sell: 2.5
   BEETROOT_SEEDS:
     material: BEETROOT_SEEDS
     price:
-      buy: 200
-      sell: 25
+      buy: 3
+      sell: 2.5
   COCOA_BEANS:
     material: COCOA_BEANS
     price:
-      buy: 10000
-      sell: 550
+      buy: 35
+      sell: 12.5
   WHEAT:
     material: WHEAT
     price:
-      buy: 2500
-      sell: 120
+      buy: 45
+      sell: 20
   PUMPKIN:
     material: PUMPKIN
     price:
-      buy: 25000
-      sell: 500
+      buy: 120
+      sell: 35
   MELON:
     material: MELON
     price:
-      buy: 15000
-      sell: 450
+      buy: 120
+      sell: 35
   BEETROOT:
     material: BEETROOT
     price:
-      buy: 40000
-      sell: 250
+      buy: 35
+      sell: 15
   SUGAR_CANE:
     material: SUGAR_CANE
     price:
-      buy: 185
-      sell: 50
+      buy: 120
+      sell: 30
   SWEET_BERRIES:
     material: SWEET_BERRIES
     price:
-      buy: 385
-      sell: 65
+      buy: 200
+      sell: 40
   CACTUS:
     material: CACTUS
     price:
-      buy: 275
-      sell: 18
+      buy: 120
+      sell: 7.5
   BAMBOO:
     material: BAMBOO
     price:
-      buy: 1000
-      sell: 100
+      buy: 20
+      sell: 5
   KELP:
     material: KELP
     price:
-      buy: 85
+      buy: 45
       sell: 20
   SEA_PICKLE:
     material: SEA_PICKLE
     price:
-      buy: 120
-      sell: 10
+      buy: 450
+      sell: 45
   HONEYCOMB:
     material: HONEYCOMB
     price:
-      buy: 100
-      sell: 7
+      buy: 450
+      sell: 50
   NETHER_WART:
     material: NETHER_WART
     price:
-      buy: 100
-      sell: 7
+      buy: 85
+      sell: 15
   WEEPING_VINES:
     material: WEEPING_VINES
     price:
       buy: 100
-      sell: 7
+      sell: 20
   TWISTING_VINES:
     material: TWISTING_VINES
     price:
-      buy: 100
-      sell: 7
+      buy: 35
+      sell: 6.5
   CHORUS_FRUIT:
     material: CHORUS_FRUIT
     price:
-      buy: 100
-      sell: 7
+      buy: 350
+      sell: 55
   CHORUS_FLOWER:
     material: CHORUS_FLOWER
     price:
-      buy: 100
-      sell: 7
+      buy: 500
+      sell: 70

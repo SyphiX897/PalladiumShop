@@ -1,23 +1,17 @@
 package ir.syphix.palladiumshop.core.shop;
 
-import ir.syrent.origin.paper.Origin;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 
-import java.io.File;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class ShopCategory {
         private final String id;
         private final String title;
 
-        private final List<ShopItem> shopItemList = new ArrayList<>();
-        public HashMap<String, ShopItem> shopItemHashMap = new HashMap<>();
+        public LinkedHashMap<String, ShopItem> shopItems = new LinkedHashMap<>();
 
         public ShopCategory(String id, String title, List<ShopItem> shopItems) {
             this.id = id;
@@ -28,12 +22,11 @@ public class ShopCategory {
         }
 
         public void addItem(ShopItem shopItem) {
-            shopItemList.add(shopItem);
-            shopItemHashMap.put(shopItem.displayName(), shopItem);
+            shopItems.put(shopItem.displayName(), shopItem);
         }
 
         public List<ShopItem> items() {
-            return shopItemList;
+            return shopItems.values().stream().toList();
         }
 
         public String id() {
@@ -43,16 +36,19 @@ public class ShopCategory {
         public String title() { return title; }
 
         public static ShopCategory fromConfig(FileConfiguration config) {
+            String id = config.getString("id");
             ConfigurationSection itemsSection = config.getConfigurationSection("items");
             if (itemsSection == null) return null;
+            List<ShopItem> shopItemList = new ArrayList<>();
+            for (String key : itemsSection.getKeys(false)) {
+                ShopItem shopItem = ShopItem.fromConfig(id, itemsSection.getConfigurationSection(key));
+                if (shopItem == null) continue;
+                shopItemList.add(shopItem);
+            }
             return new ShopCategory(
                     config.getString("id"),
-                    config.getString("title"),
-                    itemsSection
-                            .getKeys(false)
-                            .stream()
-                            .map(key -> ShopItem.fromConfig(Objects.requireNonNull(itemsSection.getConfigurationSection(key))))
-                            .toList()
+                    config.getString("title", " "),
+                    shopItemList
             );
         }
 

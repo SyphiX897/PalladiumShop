@@ -17,21 +17,18 @@ import java.util.List;
 public class ShopGuis {
 
     public ShopGuis() {
-        FileConfiguration mainConfig = Origin.getPlugin().getConfig();
+        FileConfiguration config = Origin.getPlugin().getConfig();
         for (ShopCategory shopCategory : ShopCategories.getCategories()) {
             String id = shopCategory.id();
-            List<String> ingredients = mainConfig.getStringList("shop.ingredients");
-            List<String> shape = mainConfig.getStringList("shop.shape");
-
             var customGui = new CustomGui(id, shopCategory, 54, shopCategory.title());
 
-            for (String ingredient : ingredients) {
+            for (String ingredient : config.getStringList("shop.ingredients")) {
                 List<String> ingredientList = Arrays.stream(ingredient.split(";")).toList();
                 char ch = ingredientList.get(0).charAt(0);
                 ItemStack itemStack = new ItemStack(Material.valueOf(ingredientList.get(1)));
                 customGui.glassShapeIngredient(ch, itemStack, " ");
             }
-            customGui.glassShape(shape);
+            customGui.glassShape(config.getStringList("shop.shape"));
             customGui.completeGui();
             customGui.registerGui();
         }

@@ -20,3 +20,34 @@ shop:
     - "B       B"
     - "G       G"
     - "GGBBBBBGG"
+
+sell_gui:
+  title: "<#00aeff>Sell Menu"
+  ingredients:
+    - "B;LIGHT_BLUE_STAINED_GLASS_PANE"
+    - "G;LIME_STAINED_GLASS_PANE"
+  shape:
+    - "GGBBBBBGG"
+    - "G       G"
+    - "B       B"
+    - "B       B"
+    - "G       G"
+    - "GGBBBBBGG"
+
+main_gui:
+  title: "<#00aeff>Shop"
+  color:
+    items:
+      vanilla: "<gold>"
+      custom: "<gold>"
+  ingredients:
+    - "B;LIGHT_BLUE_STAINED_GLASS_PANE"
+    - "G;LIME_STAINED_GLASS_PANE"
+  shape:
+    - "GGBBBBBGG"
+    - "G       G"
+    - "B       B"
+    - "B       B"
+    - "G       G"
+    - "GGBBBBBGG"
+

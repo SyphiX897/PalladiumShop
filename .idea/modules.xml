@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PalladiumShop.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PalladiumShop.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PalladiumShop.test.iml" filepath="$PROJECT_DIR$/.idea/modules/PalladiumShop.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ir.syphix.PalladiumShop.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ir.syphix.PalladiumShop.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ir.syphix.PalladiumShop.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ir.syphix.PalladiumShop.test.iml" />
     </modules>
   </component>
 </project>
