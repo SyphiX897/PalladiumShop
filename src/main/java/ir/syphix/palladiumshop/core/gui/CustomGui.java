@@ -33,6 +33,7 @@ public class CustomGui {
     public static NamespacedKey SHOP_PAGE = new NamespacedKey(Origin.getPlugin(), "shop_page");
     public static NamespacedKey SHOP_GLASS = new NamespacedKey(Origin.getPlugin(), "shop_glass");
     public static NamespacedKey SHOP_SELL = new NamespacedKey(Origin.getPlugin(), "shop_sell");
+    public static NamespacedKey SHOP_CATEGORY = new NamespacedKey(Origin.getPlugin(), "shop_category");
 
     public CustomGui(String id, ShopCategory shopCategory, int size, String title) {
         this.id = id;
@@ -139,11 +140,14 @@ public class CustomGui {
         }
     }
 
-    public Inventory inventory() {
-        return inventory;
-    }
-    public String id() {
-        return id;
+    public void addCategory(String category, String displayName, String material, int slot) {
+        ItemStack categoryItemStack = new ItemStack(Material.valueOf(material));
+        categoryItemStack.editMeta(itemMeta -> {
+            itemMeta.displayName(TextUtils.toComponent(displayName));
+            itemMeta.getPersistentDataContainer().set(SHOP_CATEGORY, PersistentDataType.STRING, category);
+        });
+
+        inventory.setItem(slot, categoryItemStack);
     }
 
     public void registerGui() {
@@ -162,6 +166,13 @@ public class CustomGui {
         return sellItemStack;
     }
 
+    public Inventory inventory() {
+        return inventory;
+    }
+
+    public String id() {
+        return id;
+    }
     public static int freeSpace() {
         int count = 0;
         for (String shape : Origin.getPlugin().getConfig().getStringList("shop.shape")) {

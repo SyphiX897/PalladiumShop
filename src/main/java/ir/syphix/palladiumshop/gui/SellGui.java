@@ -1,6 +1,5 @@
 package ir.syphix.palladiumshop.gui;
 
-import ir.syphix.palladiumshop.annotation.AutoInitializer;
 import ir.syphix.palladiumshop.core.gui.CustomGui;
 import ir.syrent.origin.paper.Origin;
 import org.bukkit.Material;
@@ -13,14 +12,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 
-@SuppressWarnings("unused")
-@AutoInitializer
 public class SellGui extends CustomGui implements InventoryHolder {
 
     private final Inventory inventory;
 
     public SellGui() {
-        super("sell_gui", null, 54, Origin.getPlugin().getConfig().getString("sell_gui.title", " "));
+        super("sell_gui", null, 54, Origin.getPlugin().getConfig().getString("sell_gui.title"));
         FileConfiguration config = Origin.getPlugin().getConfig();
 
         for (String ingredient : config.getStringList("sell_gui.ingredients")) {
@@ -31,8 +28,6 @@ public class SellGui extends CustomGui implements InventoryHolder {
         }
 
         glassShape(config.getStringList("sell_gui.shape"));
-        completeGui();
-        registerGui();
 
         this.inventory = inventory();
     }

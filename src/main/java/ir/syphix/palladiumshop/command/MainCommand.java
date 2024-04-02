@@ -11,6 +11,7 @@ import ir.syrent.origin.paper.command.OriginCommand;
 import ir.syrent.origin.paper.command.interfaces.SenderExtension;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.incendo.cloud.Command;
 import org.incendo.cloud.bukkit.parser.PlayerParser;
 import org.incendo.cloud.parser.standard.StringParser;
@@ -32,13 +33,19 @@ public class MainCommand extends OriginCommand {
                     Player player = context.sender().player();
                     if (player == null) return;
                     Player targetPlayer = context.<Player>optional("player").orElse(player);
-                    CustomGui gui = CustomGuiManager.guiById(context.get("menu"));
-                    if (gui == null) {
-                        player.sendMessage(TextUtils.toFormattedComponent(Messages.MENU_NOT_FOUND));
-                        return;
+                    String guiName = context.get("menu");
+                    switch (guiName) {
+                        case "main_gui" -> player.openInventory(CustomGuiManager.mainGuiByUuid(targetPlayer.getUniqueId()).getInventory());
+                        case "sell_gui" -> player.openInventory(CustomGuiManager.sellGuiByUuid(targetPlayer.getUniqueId()).getInventory());
+                        default -> {
+                            CustomGui gui = CustomGuiManager.guiById(guiName);
+                            if (gui == null) {
+                                player.sendMessage(TextUtils.toFormattedComponent(Messages.MENU_NOT_FOUND));
+                                return;
+                            }
+                            targetPlayer.openInventory(gui.inventory());
+                        }
                     }
-
-                    targetPlayer.openInventory(gui.inventory());
                 });
         getManager().command(menu);
 

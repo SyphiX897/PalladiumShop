@@ -11,28 +11,28 @@ shop:
       vanilla: "<gold>"
       custom: "<gold>"
   ingredients:
-    - "B;LIGHT_BLUE_STAINED_GLASS_PANE"
-    - "G;LIME_STAINED_GLASS_PANE"
+    - "A;LIGHT_BLUE_STAINED_GLASS_PANE"
+    - "B;LIME_STAINED_GLASS_PANE"
   shape:
-    - "GGBBBBBGG"
-    - "G       G"
+    - "BBAAAAABB"
     - "B       B"
+    - "A       A"
+    - "A       A"
     - "B       B"
-    - "G       G"
-    - "GGBBBBBGG"
+    - "BBAAAAABB"
 
 sell_gui:
   title: "<#00aeff>Sell Menu"
   ingredients:
-    - "B;LIGHT_BLUE_STAINED_GLASS_PANE"
-    - "G;LIME_STAINED_GLASS_PANE"
+    - "A;LIGHT_BLUE_STAINED_GLASS_PANE"
+    - "B;LIME_STAINED_GLASS_PANE"
   shape:
-    - "GGBBBBBGG"
-    - "G       G"
+    - "BBAAAAABB"
     - "B       B"
+    - "A       A"
+    - "A       A"
     - "B       B"
-    - "G       G"
-    - "GGBBBBBGG"
+    - "BBAAAAABB"
 
 main_gui:
   title: "<#00aeff>Shop"
@@ -41,13 +41,31 @@ main_gui:
       vanilla: "<gold>"
       custom: "<gold>"
   ingredients:
-    - "B;LIGHT_BLUE_STAINED_GLASS_PANE"
-    - "G;LIME_STAINED_GLASS_PANE"
+    - "A;LIGHT_BLUE_STAINED_GLASS_PANE"
+    - "B;LIME_STAINED_GLASS_PANE"
+    - "C;BLACK_STAINED_GLASS_PANE"
+    - "D;GRAY_STAINED_GLASS_PANE"
   shape:
-    - "GGBBBBBGG"
-    - "G       G"
-    - "B       B"
-    - "B       B"
-    - "G       G"
-    - "GGBBBBBGG"
-
+    - "BBAAAAABB"
+    - "BCCDDDCCB"
+    - "AC     CA"
+    - "ACD   DCA"
+    - "BCCDDDCCB"
+    - "BBAAAAABB"
+  categories:
+    blocks:
+      display_name: "<green>Blocks"
+      material: GRASS_BLOCK
+      slot: 20
+    food_farm:
+      display_name: "<green>Food & Farm"
+      material: COOKED_PORKCHOP
+      slot: 21
+    mobs:
+      display_name: "<green>Mobs drop"
+      material: ROTTEN_FLESH
+      slot: 22
+    ores:
+      display_name: "<green>Ores"
+      material: DIAMOND
+      slot: 23

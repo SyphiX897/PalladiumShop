@@ -20,31 +20,44 @@ public class InventoryClickListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         ItemStack clickedItem = event.getCurrentItem();
-        if (event.getInventory() == CustomGuiManager.sellGuiByUuid(event.getWhoClicked().getUniqueId()).getInventory()) {
+        Player player = (Player) event.getWhoClicked();
+
+        if (event.getInventory() == CustomGuiManager.sellGuiByUuid(player.getUniqueId()).getInventory()) {
+            event.setCancelled(true);
             if (clickedItem == null) return;
             if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_GLASS)) {
-                event.setCancelled(true);
                 return;
             }
             return;
         }
-        boolean isShop = false;
-        CustomGui gui = null;
 
+        if (event.getInventory() == CustomGuiManager.mainGuiByUuid(player.getUniqueId()).getInventory()) {
+            event.setCancelled(true);
+            if (clickedItem == null) return;
+            if (!clickedItem.hasItemMeta()) return;
+            if (clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_GLASS)) return;
+            if (clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_CATEGORY)) {
+                String categoryName = clickedItem.getItemMeta().getPersistentDataContainer().get(CustomGui.SHOP_CATEGORY, PersistentDataType.STRING);
+                player.openInventory(CustomGuiManager.guiById(categoryName).inventory());
+                return;
+            }
+        }
+
+        boolean isCustomGui = false;
+        CustomGui gui = null;
         for (CustomGui customGui : CustomGuiManager.guis()) {
             for (Inventory inventory : customGui.inventories.values()) {
                 if (event.getWhoClicked().getOpenInventory().getTopInventory() == inventory) {
-                    isShop = true;
+                    isCustomGui = true;
                     gui = customGui;
                     break;
                 }
             }
         }
 
-        if (!isShop) return;
+        if (!isCustomGui) return;
 
         event.setCancelled(true);
-        Player player = (Player) event.getWhoClicked();
 
         if (clickedItem == null) return;
         if (clickedItem.hasItemMeta() && clickedItem.getItemMeta().getPersistentDataContainer().isEmpty()) return;
