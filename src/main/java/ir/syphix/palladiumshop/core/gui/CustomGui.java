@@ -2,13 +2,16 @@ package ir.syphix.palladiumshop.core.gui;
 
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
+import ir.syphix.palladiumshop.utils.SkullUtils;
 import ir.syphix.palladiumshop.utils.TextUtils;
 import ir.syrent.origin.paper.Origin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
@@ -19,10 +22,11 @@ import java.util.List;
 
 public class CustomGui {
 
-    private final Inventory inventory;
+    private Inventory inventory;
     private final ShopCategory shopCategory;
     private final String id;
     private final int size;
+    private final String title;
     private int page = 0;
 
 
@@ -39,7 +43,11 @@ public class CustomGui {
         this.id = id;
         this.size = size;
         this.shopCategory = shopCategory;
+        this.title = title;
 
+    }
+
+    public void registerInventories(InventoryHolder inventoryHolder) {
         if (shopCategory != null) {
             int itemAmount = shopCategory.items().size();
 
@@ -52,10 +60,10 @@ public class CustomGui {
             this.page = (page + 1);
 
             for (int i = 0; i < this.page; i++) {
-                inventories.put((i + 1), Bukkit.createInventory(null, size, TextUtils.toComponent(title + " <dark_gray>(Page: " + (i + 1) + "/" + this.page + ")")));
+                inventories.put((i + 1), Bukkit.createInventory(inventoryHolder, size, TextUtils.toComponent(title + " <dark_gray>(Page: " + (i + 1) + "/" + this.page + ")")));
             }
         } else {
-            inventories.put(1, Bukkit.createInventory(null, size, TextUtils.toComponent(title)));
+            inventories.put(1, Bukkit.createInventory(inventoryHolder, size, TextUtils.toComponent(title)));
         }
 
         inventory = inventories.get(1);
@@ -164,6 +172,19 @@ public class CustomGui {
         });
 
         return sellItemStack;
+    }
+
+    public ItemStack profileItemStack(Player player) {
+        ItemStack profileItemStack;
+
+        if (SkullUtils.PLAYER_HEAD_TEXTURE.containsKey(player.getUniqueId())) {
+            profileItemStack = SkullUtils.getHead(SkullUtils.PLAYER_HEAD_TEXTURE.get(player.getUniqueId()));
+        } else {
+            profileItemStack = new ItemStack(Material.PLAYER_HEAD);
+        }
+
+
+        return profileItemStack;
     }
 
     public Inventory inventory() {

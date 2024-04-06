@@ -1,9 +1,11 @@
 package ir.syphix.palladiumshop.gui;
 
 import ir.syphix.palladiumshop.core.gui.CustomGui;
+import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syrent.origin.paper.Origin;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -14,9 +16,12 @@ import java.util.List;
 
 public class MainGui extends CustomGui implements InventoryHolder {
 
-    private Inventory inventory;
-    public MainGui() {
+    private Player player;
+    public MainGui(Player player) {
         super("main_gui", null, 54, Origin.getPlugin().getConfig().getString("main_gui.title"));
+        InventoryHolder inventoryHolder = this;
+        registerInventories(this);
+        this.player = player;
         ConfigurationSection mainGuiSection = Origin.getPlugin().getConfig().getConfigurationSection("main_gui");
         if (mainGuiSection == null) return;
 
@@ -37,12 +42,16 @@ public class MainGui extends CustomGui implements InventoryHolder {
                     categoriesSection.getInt(category + ".slot")
             );
         }
-
-        this.inventory = inventory();
     }
 
     @Override
     public @NotNull Inventory getInventory() {
-        return inventory;
+        update();
+        return inventory();
+    }
+
+
+    private void update() {
+        inventory().setItem(CustomGuiManager.mainGuiSlot(), profileItemStack(player));
     }
 }

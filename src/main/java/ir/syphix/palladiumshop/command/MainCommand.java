@@ -11,12 +11,12 @@ import ir.syrent.origin.paper.command.OriginCommand;
 import ir.syrent.origin.paper.command.interfaces.SenderExtension;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.incendo.cloud.Command;
 import org.incendo.cloud.bukkit.parser.PlayerParser;
 import org.incendo.cloud.parser.standard.StringParser;
 import org.incendo.cloud.suggestion.SuggestionProvider;
 
+@SuppressWarnings("unused")
 @AutoInitializer
 public class MainCommand extends OriginCommand {
 
@@ -26,7 +26,7 @@ public class MainCommand extends OriginCommand {
 
         Command.Builder<SenderExtension> menu = getBuilder()
                 .literal("menu")
-                .required("menu", StringParser.stringParser(), SuggestionProvider.suggestingStrings(CustomGuiManager.guis().stream().map(CustomGui::id).filter(content -> content != "sell_gui").toList()))
+                .required("menu", StringParser.stringParser(), SuggestionProvider.suggestingStrings(CustomGuiManager.guis().stream().map(CustomGui::id).toList()))
                 .optional("player", PlayerParser.playerParser())
                 .permission("opengui")
                 .handler(context -> {

@@ -5,6 +5,8 @@ import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.core.shop.ShopCategory;
 import ir.syphix.palladiumshop.core.shop.ShopItem;
+import ir.syphix.palladiumshop.gui.MainGui;
+import ir.syrent.origin.paper.Origin;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,12 +33,17 @@ public class InventoryClickListener implements Listener {
             return;
         }
 
-        if (event.getInventory() == CustomGuiManager.mainGuiByUuid(player.getUniqueId()).getInventory()) {
+        if (event.getInventory().getHolder() instanceof MainGui) {
+            Origin.broadcast("1");
             event.setCancelled(true);
             if (clickedItem == null) return;
+            Origin.broadcast("2");
             if (!clickedItem.hasItemMeta()) return;
+            Origin.broadcast("3");
             if (clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_GLASS)) return;
+            Origin.broadcast("4");
             if (clickedItem.getItemMeta().getPersistentDataContainer().has(CustomGui.SHOP_CATEGORY)) {
+                Origin.broadcast("5");
                 String categoryName = clickedItem.getItemMeta().getPersistentDataContainer().get(CustomGui.SHOP_CATEGORY, PersistentDataType.STRING);
                 player.openInventory(CustomGuiManager.guiById(categoryName).inventory());
                 return;
@@ -56,7 +63,6 @@ public class InventoryClickListener implements Listener {
         }
 
         if (!isCustomGui) return;
-
         event.setCancelled(true);
 
         if (clickedItem == null) return;

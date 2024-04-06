@@ -1,9 +1,6 @@
 package ir.syphix.palladiumshop;
 
 import ir.syphix.palladiumshop.annotation.AutoInitializerProcessor;
-import ir.syphix.palladiumshop.command.MainCommand;
-import ir.syphix.palladiumshop.core.gui.CustomGui;
-import ir.syphix.palladiumshop.core.gui.CustomGuiManager;
 import ir.syphix.palladiumshop.core.shop.ShopCategories;
 import ir.syphix.palladiumshop.item.CustomItems;
 import ir.syphix.palladiumshop.listener.InventoryClickListener;
@@ -16,9 +13,6 @@ import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.OriginPlugin;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
-
-import java.util.Collections;
-import java.util.List;
 
 public final class PalladiumShop extends OriginPlugin {
 

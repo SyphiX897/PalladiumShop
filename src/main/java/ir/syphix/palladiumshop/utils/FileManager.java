@@ -1,6 +1,5 @@
 package ir.syphix.palladiumshop.utils;
 
-import ir.syphix.palladiumshop.PalladiumShop;
 import ir.syrent.origin.paper.Origin;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -16,7 +15,7 @@ public class FileManager {
     private static final HashMap<String, FileConfiguration> categoryFiles = new HashMap<>();
 
     public static void addCategories() {
-        List<String> filesList = PalladiumShop.getInstance().getConfig().getStringList("categories");
+        List<String> filesList = Origin.getPlugin().getConfig().getStringList("categories");
         File rootDirectory = new File(Origin.getPlugin().getDataFolder(), "categories");
         if (!rootDirectory.exists()) {
             try {

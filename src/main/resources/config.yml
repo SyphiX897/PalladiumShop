@@ -36,10 +36,6 @@ sell_gui:
 
 main_gui:
   title: "<#00aeff>Shop"
-  color:
-    items:
-      vanilla: "<gold>"
-      custom: "<gold>"
   ingredients:
     - "A;LIGHT_BLUE_STAINED_GLASS_PANE"
     - "B;LIME_STAINED_GLASS_PANE"
@@ -52,6 +48,11 @@ main_gui:
     - "ACD   DCA"
     - "BCCDDDCCB"
     - "BBAAAAABB"
+  profile:
+    display_name: "<yellow><player> Information: "
+    lore:
+      - "<aqua>Balance: <green><balance>"
+    slot: 49
   categories:
     blocks:
       display_name: "<green>Blocks"
